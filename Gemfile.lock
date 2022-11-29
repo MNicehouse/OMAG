@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/faker-ruby/faker.git
+  revision: a76e075027d37e7d9d520963d56c3c4e5147045a
+  branch: main
+  specs:
+    faker (3.0.0)
+      i18n (>= 1.8.11, < 2)
+
+GIT
   remote: https://github.com/heartcombo/simple_form.git
   revision: 31fe25504771bd6cd425b585a4e0ed652fba4521
   specs:
@@ -95,6 +103,7 @@ GEM
     childprocess (4.1.0)
     concurrent-ruby (1.1.10)
     crass (1.0.6)
+    date (3.2.2)
     debug (1.6.3)
       irb (>= 1.3.6)
       reline (>= 0.3.1)
@@ -147,6 +156,10 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.9-x86_64-linux)
       racc (~> 1.4)
+    open-uri (0.2.0)
+      stringio
+      time
+      uri
     orm_adapter (0.5.0)
     pg (1.4.5)
     public_suffix (5.0.0)
@@ -154,6 +167,8 @@ GEM
       nio4r (~> 2.0)
     racc (1.6.0)
     rack (2.2.4)
+    rack-proxy (0.7.4)
+      rack
     rack-test (2.0.2)
       rack (>= 1.3)
     rails (7.0.4)
@@ -204,6 +219,7 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    semantic_range (3.0.0)
     sprockets (4.1.1)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -213,8 +229,11 @@ GEM
       sprockets (>= 3.0.0)
     stimulus-rails (1.2.0)
       railties (>= 6.0.0)
+    stringio (3.0.2)
     thor (1.2.1)
     tilt (2.0.11)
+    time (0.2.0)
+      date
     timeout (0.3.0)
     turbo-rails (1.3.2)
       actionpack (>= 6.0.0)
@@ -222,6 +241,7 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
+    uri (0.11.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.0)
@@ -233,6 +253,11 @@ GEM
       nokogiri (~> 1.6)
       rubyzip (>= 1.3.0)
       selenium-webdriver (~> 4.0)
+    webpacker (5.4.3)
+      activesupport (>= 5.2)
+      rack-proxy (>= 0.6.1)
+      railties (>= 5.2)
+      semantic_range (>= 2.3.0)
     websocket (1.2.9)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
@@ -251,9 +276,11 @@ DEPENDENCIES
   debug
   devise
   dotenv-rails
+  faker!
   font-awesome-sass (~> 6.1)
   jbuilder
   jsbundling-rails
+  open-uri
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.4)
@@ -266,6 +293,7 @@ DEPENDENCIES
   tzinfo-data
   web-console
   webdrivers
+  webpacker
 
 RUBY VERSION
    ruby 3.1.2p20
