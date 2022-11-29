@@ -1,0 +1,46 @@
+<%# title and description of the assessment %>
+
+<div class="container mt-3">
+  <h1><%= simple_form_for(@assessment) do |f| %>
+    <%= f.input :name %>
+    <%= f.submit "Edit assessment name" %>
+    <% end %></h1>
+  <h4><%= simple_form_for(@assessment) do |f| %>
+    <%= f.input :description %>
+    <%= f.submit "Edit assessment description" %>
+    <% end %></h4>
+</div>
+
+<%# Question-cards %>
+
+<div class="container">
+  <div class="card">
+    <div class="card-header d-flex">
+      <div class="question-number justify-content-between">
+        <% @questions.each_with_index do |_question, i| %>
+          <p>Question <%= i + 1 %></p>
+        <% end %>
+      </div>
+      <div class="card-btns justify-content-between">
+        <a href="#" class="btn btn-primary ">Save question</a>
+        <a href="#" class="btn btn-primary">Delete question</a>
+      </div>
+    </div>
+    <div class="card-body">
+      <p>
+        <%= simple_form_for(@questions) do |f| %>
+        <%= f.input :question_text, label: 'Type in your question', error: 'Question is mandatory, please specify one' %>
+        <%= f.input :question_type, as: :select %>
+        <%= f.submit "Edit assessment description" %>
+        <% end %>
+      </p>
+    </div>
+  </div>
+</div>
+
+<%# command buttons %>
+<div class="container d-flex justify-content-center">
+  <a href="#" class="btn btn-primary">Add question</a>
+  <a href="#" class="btn btn-primary">Save assessment</a>
+  <a href="#" class="btn btn-primary">Finish & Share Assessment</a>
+</div>
