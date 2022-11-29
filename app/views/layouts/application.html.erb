@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <title>OMAG</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,9 +11,17 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body><%= render "shared/navbar" %>
-<%= render "shared/flashes" %>
+  <body>
+  <%# NAVBAR %>
+  <%= render "shared/navbar" %>
 
-    <%= yield %>
-  </body>
+  <%# / NAVBAR %>
+
+  <%= render "shared/flashes" %>
+  <div class= "container">
+      <%= yield %>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    </body>
+  </div>
 </html>
