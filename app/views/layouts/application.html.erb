@@ -11,17 +11,30 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
-  <%# NAVBAR %>
+
+  <body class="d-flex flex-column min-vh-100">
+
+  <!--NAVBAR -->
   <%= render "shared/navbar" %>
+<%= render "shared/flashes" %>
 
-  <%# / NAVBAR %>
 
-  <%= render "shared/flashes" %>
-  <div class= "container">
-      <%= yield %>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-    </body>
+  <!--YIELD -->
+  <div class="flex-grow-1">
+    <%= yield %>
   </div>
+
+  <!--FOOTER -->
+  <div class="footer">
+    <div class="footer-links">
+      <a id="Paul" href="https://github.com/paultilly"><i class="fab fa-github" ></i></a>
+      <a id="Markus" href="https://github.com/MNicehouse"><i class="fab fa-github" ></i></a>
+      <a id="Sascha" href="https://github.com/sascha-belski"><i class="fab fa-github" ></i></a>
+      <a id="Chris" href="https://github.com/ValuableRow"><i class="fab fa-github" ></i></a>
+    </div>
+      <div class="footer-copyright">
+        Made with <i class="fas fa-heart"></i> at Le Wagon
+    </div>
+  </div>
+  </body>
 </html>
