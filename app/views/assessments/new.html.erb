@@ -27,13 +27,7 @@
       </div>
     </div>
     <div class="card-body">
-      <p>
-        <%= simple_form_for(@questions) do |f| %>
-        <%= f.input :question_text, label: 'Type in your question', error: 'Question is mandatory, please specify one' %>
-        <%= f.input :question_type, as: :select %>
-        <%= f.submit "Edit assessment description" %>
-        <% end %>
-      </p>
+      
     </div>
   </div>
 </div>
