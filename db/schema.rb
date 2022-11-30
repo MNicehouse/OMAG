@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_29_160308) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_30_115851) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,11 +48,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_160308) do
   create_table "questions", force: :cascade do |t|
     t.text "question_text"
     t.string "question_type"
-    t.integer "weight"
-    t.bigint "assessment_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["assessment_id"], name: "index_questions_on_assessment_id"
+  end
+
+  create_table "questions_assessments", force: :cascade do |t|
+    t.integer "weight"
+    t.bigint "assessment_id", null: false
+    t.bigint "question_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["assessment_id"], name: "index_questions_assessments_on_assessment_id"
+    t.index ["question_id"], name: "index_questions_assessments_on_question_id"
   end
 
   create_table "responses", force: :cascade do |t|
@@ -85,7 +92,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_160308) do
   add_foreign_key "answers", "options"
   add_foreign_key "answers", "responses"
   add_foreign_key "options", "questions"
-  add_foreign_key "questions", "assessments"
+  add_foreign_key "questions_assessments", "assessments"
+  add_foreign_key "questions_assessments", "questions"
   add_foreign_key "responses", "assessments"
   add_foreign_key "responses", "users"
 end

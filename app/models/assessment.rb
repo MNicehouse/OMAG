@@ -1,4 +1,4 @@
 class Assessment < ApplicationRecord
-  has_many :responses
-  has_many :questions
+  has_many :responses,  dependent: :destroy
+  has_many :questions,  dependent: :destroy
 end

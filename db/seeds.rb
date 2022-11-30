@@ -9,9 +9,13 @@ require 'open-uri'
 #   Character.create(name: "Luke", movie: movies.first)
 puts "dropping database entries"
 
-User.delete_all
-Assessment.delete_all
+Answer.delete_all
+Option.delete_all
+QuestionsAssessment.delete_all
 Response.delete_all
+Question.delete_all
+Assessment.delete_all
+User.delete_all
 
 puts "creating users, assessments, responses"
 # add user
@@ -63,3 +67,53 @@ response = Response.new(
     score: nil
   )
 response.save!
+# add
+40.times do |i|
+  question = Question.new(
+    question_type: "MC",
+    question_text: "Lorel ipsum dolor #{i}"
+  )
+  # 
+  question.save!
+end
+# add questions_assessments
+20.times do |i|
+  questions_assessment = QuestionsAssessment.new(
+    assessment: Assessment.first,
+    question: Question.where("id = ?", Question.first.id + i).first,
+    weight: 4
+  )
+  # 
+  questions_assessment.save!
+  #
+
+end
+20.times do |i|
+  questions_assessment = QuestionsAssessment.new(
+    assessment: Assessment.last,
+    question: Question.where("id = ?", Question.first.id + i).first,
+    weight: 4
+  )
+  # 
+  questions_assessment.save!
+end
+# populate answers to eacj questions
+Question.all.each do |question|
+  4.times do |i|
+    option = Option.new(
+      question: question,
+      option_text: "Lorel ipsum dolor response #{i}",
+      value: rand(5)
+    )
+    # 
+    option.save!
+  end
+end
+# add answer
+  4.times do |i|
+    answer = Answer.new(
+      response: Response.first,
+      option: Option.take
+    )
+   answer.save!
+  end

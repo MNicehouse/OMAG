@@ -1,4 +1,4 @@
 class Question < ApplicationRecord
-  belongs_to :assessment
-  has_many :options
+  has_many :questions_assessments,  dependent: :destroy
+  has_many :options,  dependent: :destroy
 end
