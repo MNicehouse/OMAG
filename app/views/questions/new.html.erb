@@ -1,0 +1,19 @@
+<div class="container">
+  <p>
+    <%= form_for @question do |f| %>
+    <%= f.label :question_text, "Question" %>
+    <%= f.text_field :question_text %>
+    <%= f.label :question_type, "Type" %>
+    <%= f.text_field :question_type %>
+      <% 3.times do %>
+        <%= f.fields_for :options do |option_subform| %>
+          <%= option_subform.label :option_text, "Option" %>
+          <%= option_subform.text_field :option_text %>
+          <%= option_subform.label :value, "Possible points" %>
+          <%= option_subform.text_field :value %>
+        <% end %>
+      <% end %>
+    <%= f.submit "Edit assessment description." %>
+    <% end %>
+  </p>
+</div>
