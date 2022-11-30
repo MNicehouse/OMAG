@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <title>OMAG</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,11 +11,31 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
-    <%= render "shared/navbar" %>
-    <%= render "shared/flashes" %>
-      <div class="container">
-        <%= yield %>
-      </div>
+
+
+  <body class="d-flex flex-column min-vh-100">
+
+  <!--NAVBAR -->
+  <%= render "shared/navbar" %>
+<%= render "shared/flashes" %>
+
+
+  <!--YIELD -->
+  <div class="flex-grow-1">
+    <%= yield %>
+  </div>
+
+  <!--FOOTER -->
+  <div class="footer">
+    <div class="footer-links">
+      <a id="Paul" href="https://github.com/paultilly"><i class="fab fa-github" ></i></a>
+      <a id="Markus" href="https://github.com/MNicehouse"><i class="fab fa-github" ></i></a>
+      <a id="Sascha" href="https://github.com/sascha-belski"><i class="fab fa-github" ></i></a>
+      <a id="Chris" href="https://github.com/ValuableRow"><i class="fab fa-github" ></i></a>
+    </div>
+      <div class="footer-copyright">
+        Made with <i class="fas fa-heart"></i> at Le Wagon
+    </div>
+  </div>
   </body>
 </html>
