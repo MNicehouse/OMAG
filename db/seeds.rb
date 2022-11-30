@@ -25,7 +25,7 @@ puts "creating users, assessments, responses"
       email: Faker::Internet.email,
       password: "password",
       name: Faker::Name.name,
-      consultant: true,
+      consultant: false,
       about: "Lorel ipsum dolor",
       location: Faker::Address.full_address
     )
