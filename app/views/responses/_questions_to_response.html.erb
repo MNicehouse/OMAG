@@ -1,0 +1,14 @@
+<div class="row justify-content-center" bis_skin_checked="1">
+    <div class="col-12 col-sm-12 col-md-11 col-lg-9 col-xl-7" bis_skin_checked="1">
+        <div class="flashcard-container" bis_skin_checked="1">
+          <%= form_with url: "/", method: :patch do |f| %>
+            <% myassessquestions.each do |assessquestion| %>
+               <p><%= assessquestion.question.question_text %></p>
+                  <% assessquestion.question.options.each do |assessoptions| %>
+                    <p><%= f.radio_button :id, true %><%= assessoptions.option_text %></p>
+                  <% end %>
+            <% end %>
+          <% end %>
+        </div>
+    </div>
+</div>

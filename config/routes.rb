@@ -17,8 +17,9 @@ Rails.application.routes.draw do
   resources :users do
     resources :responses, only: [:index]
   end
+  resources :responses, only: [:show, :edit, :update, :destroy]
+  
   resources :assessments do
     resources :responses, only: [:index, :new, :create]
   end
-  resources :responses, only: [:show, :edit, :update, :destroy]
 end

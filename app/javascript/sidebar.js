@@ -6,6 +6,7 @@ var clickEvent = new MouseEvent("click", {
     "bubbles": true,
     "cancelable": false
 });
+
 window.addEventListener('load',function() { 
   if (document.getElementById('accId') != null) {
     const myaccord = document.querySelector(`#${document.getElementById('accId').value} > button`);
@@ -16,3 +17,5 @@ window.addEventListener('load',function() {
     }
   }
 });
+
+
