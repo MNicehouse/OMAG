@@ -6,15 +6,22 @@ class AssessmentsController < ApplicationController
     @questions = Question.all
   end
 
+  def show
+    @assessment = Assessment.find(params[:id])
+  end
+
   def create
     @assessment = Assessment.new(assessment_params)
-    @assessment.save
-    redirect_to assessment_path(@assessment)
+    if @assessment.save!
+      redirect_to assessment_path(@assessment)
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   private
 
   def assessment_params
-    params.require(:assessment).permit(:title, :description)
+    params.require(:assessment).permit(:name, :description)
   end
 end
