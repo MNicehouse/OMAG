@@ -1,14 +1,18 @@
 <%# title and description of the assessment %>
 
 <div class="container mt-3">
-  <h1><%= simple_form_for(@assessment) do |f| %>
-    <%= f.input :name %>
-    <%= f.submit "Edit assessment name" %>
-    <% end %></h1>
-  <h4><%= simple_form_for(@assessment) do |f| %>
-    <%= f.input :description %>
-    <%= f.submit "Edit assessment description" %>
-    <% end %></h4>
+  <h1>
+    <%= simple_form_for(@assessment) do |f| %>
+      <%= f.input :name %>
+      <%= f.submit "Edit assessment name" %>
+    <% end %>
+  </h1>
+  <h4>
+    <%= simple_form_for(@assessment) do |f| %>
+      <%= f.input :description %>
+      <%= f.submit "Edit assessment description" %>
+    <% end %>
+  </h4>
 </div>
 
 <%# Question-cards %>
