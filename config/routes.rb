@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  ActiveAdmin.routes(self)
   get 'options/new'
   get 'assessments/new'
   devise_for :users
