@@ -7,11 +7,9 @@
       <div class="col">
       <a href="<%= user_responses_path( myclient, response, redir_param: 21, accord_param: "flush-headingTwo")%>"  class="nav-link px-0">
         <div class="card h-100">
-           <%= image_tag("assessments/#{pic_response_picker()}", width: 200, class: "card-img-top", alt: "assessment picture") %>
+        <h5 class="card-title text-center"><p class="card-text text-truncate"><%= response.assessment.name %></p></h5>
+          <%= image_tag("assessments/#{pic_response_picker()}", width: 200, class: "card-img-top", alt: "assessment picture") %>
           <div class="card-body">
-            <h5 class="card-title"></h5>
-            <p class="card-text text-truncate"><%= response.assessment.name %></p>
-          </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <%= response.assessment.description %>
@@ -25,6 +23,7 @@
                   pbvalmin: 0, pbvalnow: response.answers.count, pbvalmax: response.assessment.questions_assessments.count %>
             </li>
           </ul>
+          </div>
         </div>
         </a>
       </div>
