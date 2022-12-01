@@ -86,7 +86,7 @@ end
   User.create(
     email: Faker::Internet.email,
     password: "password",
-    consultant: false
+    admin: false
   )
 end
 
