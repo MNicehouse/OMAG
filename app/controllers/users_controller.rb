@@ -26,7 +26,7 @@ class UsersController < ApplicationController
       private
   
       def role(puser)
-         return puser.consultant ? "Admin" : "User"
+         return puser.admin ? "Admin" : "User"
       end
 
 end
