@@ -12,11 +12,11 @@ Rails.application.routes.draw do
   end
 
   resources :users do
-    resources :responses, only: [:index]
-    # resources :assessments, only: %i[new create]
+    resources :responses, only: %i[index]
   end
-  resources :assessments, only: %i[new create] do
-    resources :responses, only: [:index, :new, :create]
+
+  resources :assessments, only: %i[show new create] do
+    resources :responses, only: %i[index new create]
   end
-  resources :responses, only: [:show, :edit, :update, :destroy]
+  resources :responses, only: %i[show edit update destroy]
 end
