@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_30_142136) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_30_183214) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -68,8 +68,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_30_142136) do
 
   create_table "questions_assessments", force: :cascade do |t|
     t.integer "weight"
-    t.bigint "question_id"
-    t.bigint "assessment_id"
+    t.bigint "assessment_id", null: false
+    t.bigint "question_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["assessment_id"], name: "index_questions_assessments_on_assessment_id"
@@ -82,6 +82,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_30_142136) do
     t.bigint "assessment_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "completed", default: false, null: false
     t.index ["assessment_id"], name: "index_responses_on_assessment_id"
     t.index ["user_id"], name: "index_responses_on_user_id"
   end
@@ -95,6 +96,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_30_142136) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "consultant"
+    t.string "name"
+    t.boolean "host", default: false
+    t.text "about"
+    t.string "location"
     t.boolean "admin", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -103,6 +108,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_30_142136) do
   add_foreign_key "answers", "options"
   add_foreign_key "answers", "responses"
   add_foreign_key "options", "questions"
+  add_foreign_key "questions_assessments", "assessments"
+  add_foreign_key "questions_assessments", "questions"
   add_foreign_key "responses", "assessments"
   add_foreign_key "responses", "users"
 end
