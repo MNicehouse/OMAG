@@ -7,7 +7,6 @@ class AssessmentsController < ApplicationController
   end
 
   def create
-    raise
     @assessment = Assessment.new(assessment_params)
     @assessment.save!
   end
