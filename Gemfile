@@ -45,7 +45,7 @@ gem "bootsnap", require: false
 # Use Sass to process CSS
 gem "sassc-rails"
 #webpack
-gem "webpacker"
+# gem "webpacker"
 
 gem "open-uri"
 
