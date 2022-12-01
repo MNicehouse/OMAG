@@ -86,7 +86,7 @@ end
   User.create(
     email: Faker::Internet.email,
     password: "password",
-    consultant: false
+    admin: false
   )
 end
 
@@ -107,11 +107,45 @@ end
 
 options = Response.last.answers.map(&:option)
 values = []
+
 Response.last.assessment.questions_assessments.each_with_index do |qa, i|
   score_weight = qa.weight
   values << (score_weight * options[i].value)
 end
+
 Response.last.update(score: values.sum)
 Response.last.save!
 
 puts "finished!"
+
+# end
+
+# 20.times do |i|
+#   questions_assessment = QuestionsAssessment.new(
+#     assessment: Assessment.last,
+#     question: Question.where("id = ?", Question.first.id + i).first,
+#     weight: 4
+#   )
+#   #
+#   questions_assessment.save!
+# end
+# # populate answers to eacj questions
+# Question.all.each do |question|
+#   4.times do |i|
+#     option = Option.new(
+#       question: question,
+#       option_text: "Lorel ipsum dolor response #{i}",
+#       value: rand(5)
+#     )
+#     #
+#     option.save!
+#   end
+# end
+# # add answer
+#   4.times do |i|
+#     answer = Answer.new(
+#       response: Response.first,
+#       option: Option.take
+#     )
+#    answer.save!
+#   end

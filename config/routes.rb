@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  ActiveAdmin.routes(self)
   get 'options/new'
   get 'assessments/new'
   devise_for :users
@@ -12,4 +13,12 @@ Rails.application.routes.draw do
   resources :questions do
     resources :options, only: %i[new create]
   end
+
+  resources :users do
+    resources :responses, only: [:index]
+  end
+  resources :assessments do
+    resources :responses, only: [:index, :new, :create]
+  end
+  resources :responses, only: [:show, :edit, :update, :destroy]
 end

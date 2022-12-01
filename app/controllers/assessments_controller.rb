@@ -1,4 +1,6 @@
 class AssessmentsController < ApplicationController
+  before_action :authenticate_admin!, only: [ :new, :create ]
+
   def new
     @assessment = Assessment.new
     @questions = Question.all
