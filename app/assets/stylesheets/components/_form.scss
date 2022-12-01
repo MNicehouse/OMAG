@@ -1,0 +1,8 @@
+.question_container {
+  display: grid;
+  grid-template-columns: 90% 10%;
+  grid-column-gap: 5px;
+  .options, .values {
+    padding: 5px
+  }
+}

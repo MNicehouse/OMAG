@@ -115,6 +115,7 @@ end
 
 Response.last.update(score: values.sum)
 Response.last.save!
+
 puts "finished!"
 
 # end
