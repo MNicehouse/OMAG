@@ -1,19 +1,57 @@
+<!--Question text -->
 <div class="container">
-  <p>
-    <%= form_for @question do |f| %>
-    <%= f.label :question_text, "Question" %>
-    <%= f.text_field :question_text %>
-    <%= f.label :question_type, "Type" %>
-    <%= f.text_field :question_type %>
-      <% 3.times do %>
-        <%= f.fields_for :options do |option_subform| %>
-          <%= option_subform.label :option_text, "Option" %>
-          <%= option_subform.text_field :option_text %>
-          <%= option_subform.label :value, "Possible points" %>
-          <%= option_subform.text_field :value %>
-        <% end %>
-      <% end %>
-    <%= f.submit "Edit assessment description." %>
-    <% end %>
+    <%= simple_form_for @question do |f| %>
+    <%= f.input :question_text, label: "Question or Statement", placeholder: "Type in your question or statement..." %>
+</div>
+<!-- Type of question choice -->
+<div class="container">
+  <p><%= "Select your type of question" %></p>
+    <div class="btn btn-primary" type="multiple-choice-button" data-bs-toggle="collapse" data-bs-target="#collapseMC" aria-expanded="true" aria-controls="collapseMC">
+      Multiple Choice
+    </div>
+    <div class="btn btn-primary" type="bar-scale-button" data-bs-toggle="collapse" data-bs-target="#collapseBS" aria-expanded="false" aria-controls="collapseBS">
+      Bar Scale
+    </div>
+    <div class="btn btn-primary" type="likert-scale-button" data-bs-toggle="collapse" data-bs-target="#collapseLS" aria-expanded="false" aria-controls="collapseLS">
+      Likert Scale
+    </div>
   </p>
+  <div class="collapse" id="collapseMC">
+    <div class="card card-body">
+    <!-- Answer options for multiple choice type of question -->
+    <p><%= "Answer options of your question" %></p>
+      <div class="question_container">
+        <div class="options">
+          <h4>Options</h4>
+          <% 3.times do %>
+          <%= f.simple_fields_for :options do |sub_f| %>
+            <%= sub_f.input :option_text, label: "Option", label: false, placeholder: "Write your answer here." %>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="values">
+          <h4>Values</h4>
+          <% 3.times do %>
+            <%= f.simple_fields_for :options do |sub_f| %>
+              <%= sub_f.input :value, label: "Possible points", label: false, placeholder: "1...8" %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+  </p>
+    </div>
+  </div>
+  <div class="collapse" id="collapseBS">
+    <div class="card card-body">
+      Work-in-Progress
+    </div>
+  </div>
+  <div class="collapse" id="collapseLS">
+    <div class="card card-body">
+      Work-in-Progress
+    </div>
+  </div>
+    <input type="integer" name="weight" id="weight">
+    <%= f.submit "Save question" %>
+    <% end %>
 </div>

@@ -104,6 +104,7 @@ Question.all.each do |question|
     response: Response.last
   )
 end
+
 options = Response.last.answers.map(&:option)
 values = []
 Response.last.assessment.questions_assessments.each_with_index do |qa, i|
@@ -112,4 +113,5 @@ Response.last.assessment.questions_assessments.each_with_index do |qa, i|
 end
 Response.last.update(score: values.sum)
 Response.last.save!
+
 puts "finished!"

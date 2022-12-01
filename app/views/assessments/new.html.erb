@@ -19,21 +19,21 @@
       <div class="question-number justify-content-between">
         <% @questions.each_with_index do |_question, i| %>
           <p>Question <%= i + 1 %></p>
+          <div class="card-btns justify-content-between">
+            <a href="#" class="btn btn-primary ">Save question</a>
+            <a href="#" class="btn btn-primary">Delete question</a>
+          </div>
         <% end %>
-      </div>
-      <div class="card-btns justify-content-between">
-        <a href="#" class="btn btn-primary ">Save question</a>
-        <a href="#" class="btn btn-primary">Delete question</a>
       </div>
     </div>
     <div class="card-body">
-      
+
     </div>
   </div>
 </div>
 
 <%# command buttons %>
-<div class="container d-flex justify-content-center">
+<div class="container d-flex justify-content-evenly">
   <a href="#" class="btn btn-primary">Add question</a>
   <a href="#" class="btn btn-primary">Save assessment</a>
   <a href="#" class="btn btn-primary">Finish & Share Assessment</a>
