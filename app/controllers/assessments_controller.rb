@@ -7,9 +7,9 @@ class AssessmentsController < ApplicationController
   end
 
   def create
+    raise
     @assessment = Assessment.new(assessment_params)
-    @assessment.save
-    redirect_to assessment_path(@assessment)
+    @assessment.save!
   end
 
   private

@@ -14,7 +14,7 @@
      <div class="col py-3">
        <%# Content area... %>
        <div class="container" style="margin-top: 12px">
-          <h3>Hello, <%= @user.name%>!</h3>  
+          <h3>Hello, <%= @user.name%>!</h3>
        </div>
 
        <!--CARDS -->
@@ -28,6 +28,8 @@
              <%= render "adminresponsecard", admin_responses_current: @admin_responses_current, admin_responses_current_exist: @admin_responses_current_exist  %>
            <% when  62%>
              <%= render "adminresponsecardcompleted",  admin_responses_completed: @admin_responses_completed, admin_responses_completed_exist: @admin_responses_completed_exist %>
+           <% when  63%>
+             <%= render "assessments/create_assessment_poup", myassessment: @assessment,  admin_responses_completed: @admin_responses_completed, admin_responses_completed_exist: @admin_responses_completed_exist %>
             <% else %>
              ...
           <% end %>
@@ -35,6 +37,6 @@
      </div>
   </div>
 </div>
-  
+
 
 <!-- end of file -->

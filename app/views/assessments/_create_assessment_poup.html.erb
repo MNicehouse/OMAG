@@ -1,0 +1,12 @@
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="container mt-3">
+  <%= simple_form_for :myassessment, data: { turbo: :false }, url: new_assessment_path  do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.submit "Create assessment" %>
+  <% end %>
+
+</div>

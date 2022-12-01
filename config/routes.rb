@@ -5,10 +5,9 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  resources :assessments
+  # resources :assessments
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :assessments, only: %i[new create]
 
   resources :questions do
     resources :options, only: %i[new create]
@@ -16,6 +15,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :responses, only: [:index]
+    # resources :assessments, only: %i[new create]
   end
   resources :assessments do
     resources :responses, only: [:index, :new, :create]
