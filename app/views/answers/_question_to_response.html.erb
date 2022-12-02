@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row row-cols-1 row-cols-md-2 g-3">
+      <div class="col">
+        <div class="card h-100  bg-light">
+        <h4 class="card-title text-center bg-primary"><p class="card-text text-truncate">Question nr.: <%= myquestionindex+1 %></p></h4>
+          <%= simple_form_for [@response, @answer] do |f| %>
+           <div class="card-body bg-light">
+               <p class = "font-weight-bold bg-light text-center"><%= myassessquestions.find(myquestionid).question.question_text %></p>
+                <% myassessquestions.find(myquestionid).question.options.each do |assessoption| %>
+                   <%  currchecked = Answer.find_by(option_id: assessoption.id, response_id: @response.id).nil? ? false : true %>
+                   <p style = "background-color: #e7f1ff"><%= f.radio_button :option_id, assessoption.id, checked: currchecked %><span class="px-2"><%= assessoption.option_text %></span></p>
+                <% end %>
+                <%= hidden_field_tag :assessquestion_id, myquestionid %>
+           </div>
+           <div class="card-footer bg-secondary text-center">
+             <%= f.submit 'back', class: "btn btn-light btn-sm button_commit_answer"  %>
+             <%= f.submit 'forth', class: "btn btn-light btn-sm button_commit_answer" %>
+           </div>
+          <% end %>
+        </div>
+      </div>
+  </div>
+</div>

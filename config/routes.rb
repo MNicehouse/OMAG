@@ -15,7 +15,10 @@ Rails.application.routes.draw do
     resources :responses, only: [:index]
   end
   
-  resources :responses, only: [:show, :edit, :update, :destroy]
+  resources :responses, only: [:show, :edit, :update, :destroy] do
+    resources :answers, only: [:index, :new, :create]
+  end
+  resources :answers, only: [:show, :edit, :update, :destroy]
   
   resources :assessments, only: %i[new create] do
     resources :responses, only: [:index, :new, :create]
