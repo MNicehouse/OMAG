@@ -1,0 +1,39 @@
+.assessment-flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.custom-container {
+  margin: 25px 45px;
+}
+.question-header-container {
+  .question-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+  .c-button {
+    text-decoration: none;
+  }
+}
+
+.delete {
+  color: rgba($color: #b40909, $alpha: 0.8);
+}
+.edit {
+  color: rgba($color: #0939b4, $alpha: 0.8);
+}
+
+.question-container {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  column-gap: 15px;
+}
+
+.input-field {
+  background-color: white;
+  margin: 10px 0;
+  box-shadow: none;
+  border: 1px solid gray;
+}
