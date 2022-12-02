@@ -8,6 +8,7 @@ class AssessmentsController < ApplicationController
 
   def show
     @assessment = Assessment.find(params[:id])
+    @question = Question.new
   end
 
   def create

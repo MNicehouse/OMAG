@@ -23,7 +23,8 @@
       <div class="question_container">
         <div class="options">
           <h4>Options</h4>
-          <% 3.times do %>
+          <% 3.times do |i| %>
+          <input type="text" placeholder="Write your option" name='<%= "option_#{i + 1}" %>'>
           <%= f.simple_fields_for :options do |sub_f| %>
             <%= sub_f.input :option_text, label: "Option", label: false, placeholder: "Write your answer here." %>
             <% end %>
@@ -31,14 +32,13 @@
         </div>
         <div class="values">
           <h4>Values</h4>
-          <% 3.times do %>
+          <% 3.times do |i| %>
             <%= f.simple_fields_for :options do |sub_f| %>
               <%= sub_f.input :value, label: "Possible points", label: false, placeholder: "1...8" %>
             <% end %>
           <% end %>
         </div>
       </div>
-  </p>
     </div>
   </div>
   <div class="collapse" id="collapseBS">
