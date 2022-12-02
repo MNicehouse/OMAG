@@ -16,6 +16,10 @@
              <%= f.submit 'back', class: "btn btn-light btn-sm button_commit_answer"  %>
              <%= f.submit 'forth', class: "btn btn-light btn-sm button_commit_answer" %>
            </div>
+           <div style="list-style: none;">
+              <%= render 'users/bs_progressbar', pbvalwidth: ((@response.answers.count.to_f / @response.assessment.questions_assessments.count) * 100).round(0),
+                  pbvalmin: 0, pbvalnow: @response.answers.count, pbvalmax: @response.assessment.questions_assessments.count %>
+            </div>
           <% end %>
         </div>
       </div>
