@@ -5,7 +5,7 @@
     <!--CARD ITERATION -->
     <% responses_completed.each do |response| %>
       <div class="col">
-      <a href="<%= response_path( response, redir_param: 21, accord_param: "flush-headingTwo")%>"  class="nav-link px-0">
+      <a href="<%= new_response_answer_path( response, redir_param: 21, accord_param: "flush-headingTwo")%>"  class="nav-link px-0">
         <div class="card h-100">
         <h5 class="card-title text-center"><p class="card-text text-truncate"><%= response.assessment.name %></p></h5>
           <%= image_tag("assessments/#{pic_response_picker()}", width: 200, class: "card-img-top", alt: "assessment picture") %>
