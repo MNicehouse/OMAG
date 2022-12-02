@@ -6,6 +6,10 @@ class AssessmentsController < ApplicationController
     @questions = Question.all
   end
 
+  def show
+    @assessment = Assessment.find(params[:id])
+  end
+
   def create
     @assessment = Assessment.new(assessment_params)
     @assessment.save
