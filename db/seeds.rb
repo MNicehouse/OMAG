@@ -9,7 +9,7 @@ Response.destroy_all
 Assessment.destroy_all
 User.destroy_all
 
-puts "creating assessments, questions & their options, question_assessments, answers, responses"
+puts "creating assessments, questions & their options, question_assessments, answers, responses and users"
 
 # Real Maturity Assessment
 okr_assessment = Assessment.create(
@@ -97,6 +97,12 @@ User.all.each do |user|
     assessment: okr_assessment
   )
 end
+
+User.create(
+  email: "admin@example.com",
+  password: "123456",
+  admin: true
+)
 
 Question.all.each do |question|
   Answer.create(
