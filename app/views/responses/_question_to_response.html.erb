@@ -6,8 +6,8 @@
           <%= form_with url: response_path, method: :patch do |f| %>
            <div class="card-body bg-light">
                <p class = "font-weight-bold bg-light text-center"><%= myassessquestions.find(myquestionid).question.question_text %></p>
-                  <% myassessquestions.find(myquestionid).question.options.each do |assessoptions| %>
-                    <p style = "background-color: #e7f1ff"><%= f.radio_button :id, true %><span class="px-2"><%= assessoptions.option_text %></span></p>
+                  <% myassessquestions.find(myquestionid).question.options.each do |assessoption| %>
+                    <p style = "background-color: #e7f1ff"><%= f.radio_button :id, assessoption.id %><span class="px-2"><%= assessoption.option_text %></span></p>
                   <% end %>
            </div>
            <div class="card-footer bg-secondary text-center">
