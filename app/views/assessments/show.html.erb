@@ -4,10 +4,9 @@
     <p> <%= @assessment.description %></p>
   </div>
   <%# command buttons %>
-  <div class="">
-    <a href="#" class="btn btn-primary">Save</a>
-    <%# <%= link_to "Save", response_path(@response), class: "btn btn-primary" %>
-    <%= button_to "Finish & Share", responses_path(assessment: @assessment.id), method: :post, class: "btn btn-primary", remote: true %>
+  <div class="command buttons">
+    <%= link_to "Save", user_path(current_user), class: "btn btn-primary" %>
+    <%= render "responses/user_select_dropdown" %>
   </div>
 </div>
 

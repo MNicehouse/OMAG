@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="btn btn-primary" type="multiple-choice-button" data-bs-toggle="collapse" data-bs-target="#collapseMC" aria-expanded="true" aria-controls="collapseMC">
+      Finish & Send
+    </div>
+  <div class="collapse" id="collapseMC">
+    <div class="card card-body">
+      <%= simple_form_for [@assessment, @response] do |f| %>
+        <%= f.input :user, collection: User.all, label_method: :email %>
+        <%= f.submit "Send to selected user" %>
+      <% end %>
+    </div>
+  </div>
+</div>
