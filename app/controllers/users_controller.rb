@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @responses_completed = @user.responses.where(completed: true)
     # empties?
     @responses_current_exist = @responses_current.count > 0 ? true : false
-    @response_completed_exist = @responses_completed.count > 0 ? true : false
+    @responses_completed_exist = @responses_completed.count > 0 ? true : false
     # user
     @admin_responses_current = Response.where(completed: false)
     @admin_responses_completed = Response.where(completed: true)

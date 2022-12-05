@@ -1,5 +1,5 @@
 <div class="container">
-  <% if @responses_completed_exist %>
+  <% if responses_completed_exist %>
   <p>completed tests:</p>
   <div class="row row-cols-1 row-cols-md-3 g-4">
     <!--CARD ITERATION -->
@@ -29,7 +29,7 @@
       </div>
     <% end %>
   </div>
-  <% else %>
+   <% else %>
     <p>no completed tests</p>
   <% end %>
 </div>

@@ -135,12 +135,13 @@ class AnswersController < ApplicationController
          # @answers = @response.answers
         
             query = <<-SQL 
-               SELECT answers.id, questions_assessments.weight, options.value 
+               SELECT answers.id, questions_assessments.weight, opt1.value, (SELECT MAX(opt2.value) FROM options opt2 WHERE opt2.question_id = questions.id) AS maxvalue,
+                    (SELECT MIN(opt2.value) FROM options opt2 WHERE opt2.question_id = questions.id) AS minvalue
                FROM answers
-               INNER JOIN options 
-               ON options.id = answers.option_id
+               INNER JOIN options opt1 
+               ON opt1.id = answers.option_id
                INNER JOIN questions
-               ON options.question_id = questions.id
+               ON opt1.question_id = questions.id
                INNER JOIN questions_assessments
                ON questions_assessments.question_id = questions.id
                INNER JOIN assessments
@@ -153,15 +154,22 @@ class AnswersController < ApplicationController
             @results = ActiveRecord::Base.connection.execute(query)
             # calculation
             @fresult = 0
+            @maxfresult = 0
+            @minfresult = 0
             if !(@results.nil?)
                @results.each do |result|
                   @fresult += result["weight"].to_i * result["value"].to_i
+                  @maxfresult  += result["weight"].to_i * result["maxvalue"].to_i
+                  @minfresult  += result["weight"].to_i * result["minvalue"].to_i
                end
             end
             #points
-            @fresult =  @fresult.to_f / @results.count
+            @fresult =  @fresult.to_f  / @results.count
+            @maxfresult = @maxfresult.to_f  / @results.count
+            @minfresult = @minfresult.to_f  / @results.count
             #percentage       
-            @response.score =  @fresult.round(2)*100
+            # @response.score =  @fresult.round(2)*100
+            @response.score =  (@fresult.round(2)*100 / (@maxfresult - @minfresult)).round
             @response.completed = true
             @response.save
          end
