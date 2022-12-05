@@ -10,6 +10,7 @@ class AnswersController < ApplicationController
         @redir = params[:redir_param].nil? ? 0 : params[:redir_param].to_i
         #questiona
         set_questions(params[:myassessquestionid], params[:dir_param], false)
+        
       end
 
       def create
@@ -47,7 +48,7 @@ class AnswersController < ApplicationController
             format.text { 
                 set_questions(params[:assessquestion_id], params[:m_submit], suspect_answers_exact.nil?)                           
                 if @completed
-                    render partial: "result_to_response", locals: {  response: @response,  answer: Answer.new, myassessquestions: @questions, myquestionid: @myquestionid_new, myquestionindex: @myquestionindex_new }, formats: [:html]
+                    render partial: "result_to_response", locals: { response: @response }, formats: [:html]
                 else
                     render partial: "question_to_response", locals: {  response: @response,  answer: Answer.new, myassessquestions: @questions, myquestionid: @myquestionid_new, myquestionindex: @myquestionindex_new }, formats: [:html]
                 end  }
@@ -91,6 +92,7 @@ class AnswersController < ApplicationController
             @myquestionindex_new = quest_arr.find_index(@myquestionid).nil? ? 0 : quest_arr.find_index(@myquestionid)
             if (@myquestionindex_new) >= quest_arr.count
               @completed = true
+              calculate_response  if @response.score == 0
             else
               @myquestionid_new = quest_arr[@myquestionindex_new]
             end
@@ -99,6 +101,7 @@ class AnswersController < ApplicationController
           @myquestionindex_new = quest_arr.find_index(@myquestionid).nil? ? 0 : quest_arr.find_index(@myquestionid) + 1
           if (@myquestionindex_new) >= quest_arr.count
             @completed = true
+            calculate_response  if @response.score == 0
           else
             @myquestionid_new = quest_arr[@myquestionindex_new]
           end
@@ -121,10 +124,45 @@ class AnswersController < ApplicationController
             end
             if @myquestionindex_new.nil?
                 @completed = true
+                calculate_response  if @response.score == 0
               else
                 @myquestionid_new = quest_arr[@myquestionindex_new]
               end
         end
       end
-
+     
+      def calculate_response
+         # @answers = @response.answers
+        
+            query = <<-SQL 
+               SELECT answers.id, questions_assessments.weight, options.value 
+               FROM answers
+               INNER JOIN options 
+               ON options.id = answers.option_id
+               INNER JOIN questions
+               ON options.question_id = questions.id
+               INNER JOIN questions_assessments
+               ON questions_assessments.question_id = questions.id
+               INNER JOIN assessments
+               ON assessments.id = questions_assessments.assessment_id
+               INNER JOIN responses
+               ON responses.assessment_id = assessments.id
+               WHERE responses.id = #{@response.id}
+                 AND answers.response_id = responses.id           
+            SQL
+            @results = ActiveRecord::Base.connection.execute(query)
+            # calculation
+            @fresult = 0
+            if !(@results.nil?)
+               @results.each do |result|
+                  @fresult += result["weight"].to_i * result["value"].to_i
+               end
+            end
+            #points
+            @fresult =  @fresult.to_f / @results.count
+            #percentage       
+            @response.score =  @fresult.round(2)*100
+            @response.completed = true
+            @response.save
+         end
 end
