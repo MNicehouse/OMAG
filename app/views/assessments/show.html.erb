@@ -4,10 +4,9 @@
     <p> <%= @assessment.description %></p>
   </div>
   <%# command buttons %>
-  <div class="">
-    <a href="#" class="btn btn-primary">Add</a>
-    <a href="#" class="btn btn-primary">Save</a>
-    <a href="#" class="btn btn-primary">Finish & Share</a>
+  <div class="command buttons">
+    <%= link_to "Save", user_path(current_user), class: "btn btn-primary" %>
+    <%= render "responses/user_select_dropdown" %>
   </div>
 </div>
 

@@ -37,5 +37,4 @@ class QuestionsController < ApplicationController
   def options_params
     params.require(:option).permit(:option_text, :value)
   end
-
 end

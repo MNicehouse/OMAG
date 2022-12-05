@@ -8,6 +8,10 @@ class AssessmentsController < ApplicationController
 
   def show
     @assessment = Assessment.find(params[:id])
+    @user = current_user
+    @users = User.all
+    @responses = Response.all
+    @response = Response.new
     @question = Question.new
   end
 
