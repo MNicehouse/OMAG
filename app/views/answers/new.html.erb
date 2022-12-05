@@ -28,7 +28,7 @@
      </div>
        <!--CARDS -->
          <% if  @completed%>
-           <%= render "result_to_response", response: @response, answer: @answer, myassessquestions: @questions, myquestionid: @myquestionid_new, myquestionindex: @myquestionindex_new %>
+           <%= render "result_to_response", response: @response %>
          <% else%>
            <%= render "question_to_response", response: @response, answer: @answer, myassessquestions: @questions, myquestionid: @myquestionid_new, myquestionindex: @myquestionindex_new %>
          <% end%>
