@@ -1,6 +1,6 @@
-<% exampescores = response.score.to_f / 100  %>
-<% exampescore_from_user = exampescores %>
-<% exampescore_from_user_in_percent = (exampescore_from_user / 8 * 100).round(2)  %>
+<%# <% exampescores = response.score  %> %>
+<%# <% exampescore_from_user = exampescores %> %>
+<% exampescore_from_user_in_percent = response.score  %>
 
 
 <div class="container" style="margin-top: 24px" data-controller="add-answer" data-add-answer-target="card">
