@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     resources :responses, only: %i[index new create]
   end
 
-  resources :responses, only: %i[show edit update destroy] do
+  resources :responses, only: %i[create show edit update destroy] do
     resources :answers, only: %i[index new create]
   end
   resources :answers, only: %i[show edit update destroy]
