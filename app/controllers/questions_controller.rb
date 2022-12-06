@@ -28,6 +28,20 @@ class QuestionsController < ApplicationController
     redirect_to assessment_path(@assessment)
   end
 
+  def destroy
+    @question = Question.find(params[:id])
+    @assessment = @question.questions_assessments.first.assessment
+    @question.destroy
+    redirect_to assessment_path(@assessment)
+  end
+
+  def update
+    @question = Question.find(params[:id])
+    @assessment = @question.questions_assessments.first.assessment
+    @question.update(question_params)
+    redirect_to assessment_path(@assessment)
+  end
+
   private
 
   def question_params

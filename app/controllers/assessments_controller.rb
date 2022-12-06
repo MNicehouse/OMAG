@@ -12,7 +12,11 @@ class AssessmentsController < ApplicationController
     @users = User.all
     @responses = Response.all
     @response = Response.new
-    @question = Question.new
+    if params[:question_id]
+      @question = Question.find(params[:question_id])
+    else
+      @question = Question.new
+    end
   end
 
   def create

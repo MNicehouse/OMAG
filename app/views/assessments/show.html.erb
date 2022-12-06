@@ -48,11 +48,12 @@
         <div class="card">
           <div class="card-header question-header-container assessment-flex">
             <p class="question-name">Question <%= i + 1 %></p>
-            <a href="#" class="c-button delete">Delete</a>
+            <%= link_to "Delete", question_path(question.id), class:"c-button delete", data: {turbo_method: :delete} %>
           </div>
           <div class="card-body">
             <div class="question-header-container assessment-flex">
               <%= question.question_text %>
+              <%= link_to "Edit", assessment_path(@assessment, question_id: question.id), class:"c-button edit" %>
               <a href="#" class="c-button edit">Edit</a>
             </div>
           </div>
