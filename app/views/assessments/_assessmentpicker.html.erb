@@ -1,0 +1,19 @@
+<h1>Asssessments</h1>
+<div class="table table-striped">
+  <table id = "myAssessmentsIndexTbl">
+    <thead>
+      <tr>
+        <th style="display:none;">Id</th>
+        <th>Name</th>
+        <th>description</th>
+        <th>show</th>
+      </tr>
+    </thead>
+    <tbody>
+       <%= render @assessments %>
+    </tbody>
+  </table>
+</div>
+<%= raw pagy_nav(@pagy) %>
+ <%= hidden_field_tag 'asssessment_id'  %>
+

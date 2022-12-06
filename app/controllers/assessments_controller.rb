@@ -28,9 +28,20 @@ class AssessmentsController < ApplicationController
     end
   end
 
+  def index
+    # @assessments = Assessment.all
+    @pagy, @assessments = pagy(Assessment.all, items: 10)
+    @role = role(current_user)
+    @assessnotchosen = true
+  end
+
   private
 
   def assessment_params
     params.require(:assessment).permit(:name, :description)
+  end
+
+  def role(puser)
+    return puser.admin ? "Admin" : "User"
   end
 end

@@ -1,0 +1,36 @@
+ <div class="container-fluid">
+   <div class="row flex-nowrap">
+     <!--SIDEBAR -->
+     <%# Booker %>
+     <% if  (@role == 'User')%>
+     <% content_for(:booker) { render partial: 'users/sidebar_client', locals: { myclient: current_user  }} %>
+     <%# Host %>
+     <% elsif  (@role == 'Admin')%>
+     <% content_for(:host) { render partial: 'users/sidebar_consultant', locals: { myconsultant: current_user }} %>
+     <% end%>
+     <%= render  "users/navbar" %>
+     <!--CONTENT -->
+     <div class="col py-3">
+       <%# Content area... %>
+       <div class="container">
+         <div class="row row-cols-1 row-cols-md-2 g-3">
+           <div class="col">
+             <div class="card h-100  bg-light">
+               <div class="card-body bg-light">
+               <h5 class="card-text text-truncate text-center" style = "background-color: #dee2e6">Assessment drafts</h5>
+                 <p>You have totally <%= @assessments.count %> assessment drafts to this test</p>
+                 <p><%= "#{@assessments.count} assessment drafts" %></p>
+               </div>
+             </div>
+           </div>
+         </div>
+     </div>
+       <!--CARDS -->
+         <% if  @assessnotchosen%>
+           <%= render "assessmentpicker", assessments: @assessments %>
+         <% else%>
+           <%# <%= render "question_to_response", response: @response, answer: @answer, myassessquestions: @questions, myquestionid: @myquestionid_new, myquestionindex: @myquestionindex_new %>
+         <% end%>
+     </div>
+  </div>
+</div>
