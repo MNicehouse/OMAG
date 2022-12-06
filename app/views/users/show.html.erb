@@ -12,13 +12,21 @@
      <%= render  "users/navbar" %>
      <!--CONTENT -->
      <div class="col py-3">
-       <%# Content area... %>
-       <div class="container" style="margin-top: 12px">
-          <h3>Hello, <%= @user.name%>!</h3>
-       </div>
+        <%# Content area... %>
+       <div class="container">
+         <div class="row row-cols-1 row-cols-md-2 g-3">
+           <div class="col">
+             <div class="card h-100  bg-light">
+               <h4 class="card-title text-center bg-secondary text-light">
+               You have totally <%= @user.responses.count %> tests:   
+                 <span><%= @user.responses.where(completed: false).count %> current and <%= @user.responses.where(completed: true).count %> completed test</span>
+               </h4>
+             </div>
+           </div>
+         </div>
+     </div>
 
        <!--CARDS -->
-       <div class="container" style="margin-top: 12px">
           <% case  @redir%>
           <% when  21%>
              <%= render "users/responsecard", myclient: @user, responses_current: @responses_current, responses_current_exist: @responses_current_exist %>
@@ -33,7 +41,6 @@
             <% else %>
              ...
           <% end %>
-       </div>
      </div>
   </div>
 </div>

@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :responses, only: %i[index]
   end
 
-  resources :assessments, only: %i[show new create] do
+  resources :assessments, only: %i[index show new create] do
     resources :responses, only: %i[index new create]
   end
 

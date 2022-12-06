@@ -1,0 +1,7 @@
+<%= tag.tr id: dom_id(assessment) do %>
+  <td style="display:none;"><%= assessment.id %></td>
+  <td><%= assessment.name %></td>
+  <td><%= assessment.description %></td>
+  <td><%= assessment.state %></td>
+  <td><%= link_to "Show", assessment_path(assessment) %></td>
+<% end %>
