@@ -1,2 +1,28 @@
-<div>hier entsteht result page</div>
-<%= response.score %>
+<div class="container" style="margin-top: 24px">
+  <div class="card">
+    <div class="card-body" >
+      <% if response.score < 33 %>
+        <h2 class="card-title">You are a Novice</h2>
+        <h3 class="card-text">You scored at <%= response.score %> %</h3>
+        <p class="card-text"><small class="text-muted"></small></p>
+        <div>
+        <%= image_tag "undraw_awesome_rlvy.png", class:"rounded mx-auto d-block", alt: "paul rocks" %>
+        </div>
+      <% elsif (33..66) === response.score  %>
+        <h2 class="card-title">You are a Intermediate</h2>
+          <h3 class="card-text">You scored at <%= response.score %> %</h3>
+          <p class="card-text"><small class="text-muted"></small></p>
+          <div>
+          <%= image_tag "undraw_awesome_rlvy.png", class:"rounded mx-auto d-block", size: "100px" , alt: "paul rocks"  %>
+        </div>
+      <% else response.score >= 66 %>
+        <h2 class="card-title">You are Expert</h2>
+          <h3 class="card-text">You scored at <%= response.score %> %</h3>
+          <p class="card-text"><small class="text-muted"></small></p>
+          <div>
+        <%= image_tag "welldone.png", class:"rounded mx-auto d-block", alt: "paul rocks" %>
+        <% end %>
+    </div>
+  </div>
+</div>
+</div>

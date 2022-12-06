@@ -8,7 +8,15 @@ class AssessmentsController < ApplicationController
 
   def show
     @assessment = Assessment.find(params[:id])
-    @question = Question.new
+    @user = current_user
+    @users = User.all
+    @responses = Response.all
+    @response = Response.new
+    if params[:question_id]
+      @question = Question.find(params[:question_id])
+    else
+      @question = Question.new
+    end
   end
 
   def create
