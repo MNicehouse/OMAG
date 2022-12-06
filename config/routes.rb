@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
-  resources :questions, only: %i[new create destroy] do
+  resources :questions, only: %i[new create destroy update] do
     resources :options, only: %i[new create]
   end
 

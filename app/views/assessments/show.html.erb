@@ -53,6 +53,7 @@
           <div class="card-body">
             <div class="question-header-container assessment-flex">
               <%= question.question_text %>
+              <%= link_to "Edit", assessment_path(@assessment, question_id: question.id), class:"c-button edit" %>
               <a href="#" class="c-button edit">Edit</a>
             </div>
           </div>
