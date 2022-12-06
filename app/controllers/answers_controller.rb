@@ -10,7 +10,7 @@ class AnswersController < ApplicationController
         @redir = params[:redir_param].nil? ? 0 : params[:redir_param].to_i
         #questiona
         set_questions(params[:myassessquestionid], params[:dir_param], false)
-        
+
       end
 
       def create
@@ -45,8 +45,8 @@ class AnswersController < ApplicationController
                  elsif  params[:commit] == 'back'
                  redirect_to new_response_answer_path( @response, myassessquestionid: params[:assessquestion_id], dir_param: "back", redir_param: @redir_param, accord_param: @accord_param )
                  end }
-            format.text { 
-                set_questions(params[:assessquestion_id], params[:m_submit], suspect_answers_exact.nil?)                           
+            format.text {
+                set_questions(params[:assessquestion_id], params[:m_submit], suspect_answers_exact.nil?)
                 if @completed
                     render partial: "result_to_response", locals: { response: @response }, formats: [:html]
                 else
@@ -61,7 +61,7 @@ class AnswersController < ApplicationController
       end
 
       private
-    
+
       def role(puser)
          return puser.admin ? "Admin" : "User"
       end
@@ -130,15 +130,15 @@ class AnswersController < ApplicationController
               end
         end
       end
-     
+
       def calculate_response
          # @answers = @response.answers
-        
-            query = <<-SQL 
+
+            query = <<-SQL
                SELECT answers.id, questions_assessments.weight, opt1.value, (SELECT MAX(opt2.value) FROM options opt2 WHERE opt2.question_id = questions.id) AS maxvalue,
                     (SELECT MIN(opt2.value) FROM options opt2 WHERE opt2.question_id = questions.id) AS minvalue
                FROM answers
-               INNER JOIN options opt1 
+               INNER JOIN options opt1
                ON opt1.id = answers.option_id
                INNER JOIN questions
                ON opt1.question_id = questions.id
@@ -149,7 +149,7 @@ class AnswersController < ApplicationController
                INNER JOIN responses
                ON responses.assessment_id = assessments.id
                WHERE responses.id = #{@response.id}
-                 AND answers.response_id = responses.id           
+                 AND answers.response_id = responses.id
             SQL
             @results = ActiveRecord::Base.connection.execute(query)
             # calculation
@@ -167,10 +167,10 @@ class AnswersController < ApplicationController
             @fresult =  @fresult.to_f  / @results.count
             @maxfresult = @maxfresult.to_f  / @results.count
             @minfresult = @minfresult.to_f  / @results.count
-            #percentage       
+            #percentage
             # @response.score =  @fresult.round(2)*100
-            @response.score =  (@fresult.round(2)*100 / (@maxfresult - @minfresult)).round
-            @response.completed = true
-            @response.save
-         end
+            @response.update(score: (@fresult.round(2)*100 / (@maxfresult - @minfresult)).round)
+            @response.update(completed: true)
+            @response.save!
+        end
 end
