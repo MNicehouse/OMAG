@@ -1,0 +1,32 @@
+//grid
+.tbl-mygrid {
+    //display: grid;
+    // grid-template-columns: 1fr 2fr 80%; 
+    max-width: 600px;
+    border: 4px solid #6c757d;
+    border-collapse: collapse;
+}
+table.tbl-mygrid td {
+    padding: 0.5rem;
+    border: 1px solid #6c757d;
+}
+table.tbl-mygrid th {
+    padding: 0.5rem;
+    border: 1px solid #6c757d;
+}
+.tbl-mygrid th {text-align: center; background-color: #0D6EFD; color: white;}
+
+.tbl-mygrid a {
+        margin:0 auto;    
+        display:block;
+     }
+.tbl-mygrid tr:nth-child(even) {background: #e7f1ff}
+.tbl-mygrid tr:nth-child(odd) {background: #faf0e6}
+
+.tbl-mygrid a.btn {
+    margin-top: 2px;
+    margin-bottom: 2px;
+    border-radius: 5px;
+    color: white;
+}
+.tbl-mygrid tr.tr-clicked{ background-color: #b9132f !important; color: white !important;}

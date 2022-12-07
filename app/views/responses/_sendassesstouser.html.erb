@@ -1,0 +1,79 @@
+<% if assessments.count > 0  %>
+<div class="container">
+<div class="row row-cols-1 row-cols-md-2 g-3">
+ <div class="col">
+<div class="card h-100  bg-light">
+<h5 class="card-title text-center"><div class="card-text text-truncate" style="background-color: #dee2e6; margin-bottom: 0px"><% "#{assess_state} Asssessments" %></div></h5>
+<div class="card-body bg-light">
+<div class="table table-striped">
+  <table id = "id-assessments-index-tbl" class = "tbl-mygrid">
+    <thead>
+      <tr>
+        <th class="text-center" scope="col" style="display:none;">Id</th>
+        <th class="text-center"scope="col">Nr</th>
+        <th scope="col">Name</th>
+        <th scope="col">description</th>
+        <th scope="col">state</th>
+        <th scope="col" style="display:none;">show</th>
+      </tr>
+    </thead>
+    <tbody>
+       <%= render assessments %>
+    </tbody>
+  </table>
+</div>
+<%= raw pagy_nav(@mypagy) if !(@mypagy.nil?) %>
+</div>
+</div>
+</div>
+</div>
+</div>
+<% end  %>
+<% if users.count > 0  %>
+<div class="container">
+<div class="row row-cols-1 row-cols-md-2 g-3">
+ <div class="col">
+<div class="card h-100  bg-light">
+<h5 class="card-title text-center"><div class="card-text text-truncate" style="background-color: #dee2e6; margin-bottom: 0px">Clients</div></h5>
+<div class="card-body bg-light">
+<div class="table table-striped">
+  <table id = "id-users-index-tbl" class = "tbl-mygrid">
+    <thead>
+      <tr>
+        <th class="text-center" scope="col" style="display:none;">Id</th>
+        <th class="text-center"scope="col">Nr</th>
+        <th scope="col">Name</th>
+        <th scope="col">E-mail</th>
+      </tr>
+    </thead>
+    <tbody>
+       <%= render @clients %>
+    </tbody>
+  </table>
+</div>
+<%= raw pagy_nav(myuserspagy) if !(myuserspagy.nil?) %>
+</div>
+</div>
+</div>
+</div>
+</div>
+<% end  %>
+<div class="container">
+<div class="row row-cols-1 row-cols-md-2 g-3">
+ <div class="col">
+<div class="card h-100  bg-light">
+<h5 class="card-title text-center"><div class="card-text text-truncate" style="background-color: #dee2e6; margin-bottom: 0px">selected values</div></h5>
+<div class="card-body bg-light">
+      <%= simple_form_for Response.new do |f| %>
+         <%= hidden_field_tag 'assessment_id'  %>
+         <%= hidden_field_tag 'user_id'  %>
+         <input type="text" id="assessment_name" name="assessment_name">
+         <input type="text" id="user_name" name="user_name">
+         <input type=hidden name=m_submit value=''/>
+        <%= f.submit 'create new assessment', class: "btn btn-primary btn-sm button_commit_answer",  onclick: 'this.form.m_submit.value = this.value;' %>
+      <% end %>
+</div>
+</div>
+</div>
+</div>
+</div>

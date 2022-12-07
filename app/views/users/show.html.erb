@@ -18,8 +18,14 @@
            <div class="col">
              <div class="card h-100  bg-light">
                <h4 class="card-title text-center bg-secondary text-light">
-               You have totally <%= @user.responses.count %> tests:   
-                 <span><%= @user.responses.where(completed: false).count %> current and <%= @user.responses.where(completed: true).count %> completed test</span>
+               <% if (@redir == 21 || @redir == 22) %>
+               You have totally <%= @user.responses.count %> assessments:   
+                 <span><%= @user.responses.where(completed: false).count %> current and <%= @user.responses.where(completed: true).count %> completed assessments</span>
+               <% end %>
+               <% if (@redir == 61 || @redir == 62 || @redir == 63) %>
+                 You are supervising
+                 <span><%= @admin_responses_current.count %> current and <%= @admin_responses_completed.count %> completed assessments</span>
+               <% end %>
                </h4>
              </div>
            </div>

@@ -169,7 +169,7 @@ class AnswersController < ApplicationController
             @minfresult = @minfresult.to_f  / @results.count
             #percentage
             # @response.score =  @fresult.round(2)*100
-            @response.update(score: (@fresult.round(2)*100 / (@maxfresult - @minfresult)).round)
+            @response.update(score: ((@fresult.round(2)-@minfresult)*100 / (@maxfresult - @minfresult)).round)
             @response.update(completed: true)
             @response.save!
         end

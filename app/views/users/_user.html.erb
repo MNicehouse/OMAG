@@ -1,0 +1,6 @@
+<%= tag.tr id: dom_id(user), class: 'tr-mygrid user-tr-mygrid' do %>
+  <td style="display:none;"><%= user.id %></td>
+  <td scope="row"><%= user_counter + 1 %></td>
+  <td><%= user.name %></td>
+  <td><%= user.email %></td>
+<% end %>

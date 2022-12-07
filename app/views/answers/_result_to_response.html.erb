@@ -1,5 +1,5 @@
 <div class="container" style="margin-top: 24px">
-
+  <%  exampescore_from_user_in_percent = response.score%>
   <div class="card" style="max-width: 568px;">
     <div class="card-body">
       <% if exampescore_from_user_in_percent < 33 %>
@@ -7,21 +7,21 @@
         <p class="card-text text-center fw-semibold">You scored at <%= exampescore_from_user_in_percent %> %</p>
         <p class="card-text"><small class="text-muted"></small></p>
         <div>
-        <%= image_tag "undraw_Notify_re_65.png", class:"card-img-bottom", alt: "bad" %>
+        <%= image_tag "assessments/undraw_Notify_re_65on", class:"card-img-bottom", alt: "bad" %>
         </div>
       <% elsif (33..66) === exampescore_from_user_in_percent  %>
         <h2 class="card-title text-center bg-secondary text-light fw-semibold">You're Level: Intermediate</h2>
           <p class="card-text text-center fw-semibold">You scored at <%= exampescore_from_user_in_percent %> %</p>
           <p class="card-text"><small class="text-muted"></small></p>
           <div>
-          <%= image_tag "undraw_Service_re_hu5n.png", class:"card-img-bottom", size: "100px" , alt: "medium"  %>
+          <%= image_tag "assessments/undraw_Services_re_hu5n.png", class:"card-img-bottom", size: "100px" , alt: "medium"  %>
         </div>
       <% else exampescore_from_user_in_percent >= 66 %>
         <h2 class="card-title text-center bg-secondary text-light fw-semibold">You're Level: Expert</h2>
           <p class="card-text text-center fw-semibold">You scored at <%= exampescore_from_user_in_percent %> %</p>
           <p class="card-text"><small class="text-muted"></small></p>
           <div>
-        <%= image_tag "undraw_awesome_rlvy.png", class:"card-img-bottom", alt: "good" %>
+        <%= image_tag "assessments/undraw_awesome_rlvy.png", class:"card-img-bottom", alt: "good" %>
           </div>
         <% end %>
     </div>
