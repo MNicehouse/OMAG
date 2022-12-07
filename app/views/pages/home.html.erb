@@ -1,17 +1,18 @@
 <div class="banner-home">
   <div class="container">
-    <h1>Qualify your prospects beyond the pushy sales talk</h1>
-    <p>Make the most out of your client maturity assessments.</p>
-    <button type="button" class="btn btn-light" href="<%= %>">Get started</button>
+    <h1>Online Maturity Assessment Generator</h1>
+    <p>Qualify your prospects beyond the pushy sales talk</p>
+    <% if user_signed_in? %>
+      <%= link_to "Get started", user_path(current_user, redir_param: 61, accord_param: "flush-headingSix"), class: "btn btn-light" %>
+    <%else  %>
+    <%= link_to "Get started", new_user_session_path, class: "btn btn-light" %>
+  <% end %>
   </div>
 </div>
 
 <div class="container">
-    <h2 class="mb-4 mt-4"><strong>How it works<strong></h2>
-    <div class="d-flex flex-row mb-3">
-      <div class="card" style="width: 60rem; margin-right: 18px; padding: 12px" class="p-2">
-        <p>Some representative placeholder content</p>
-      </div>
+    <h2 class="mb-4 mt-4" id= "how-it-works"><strong>How it works<strong></h2>
+
       <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false" class="p-2">
         <div class="carousel-indicators">
           <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -22,13 +23,13 @@
           <div class="carousel-item active">
             <%= image_tag "create_omag.png", class: "d-block w-100", alt: "create image" %>
               <div class="carousel-caption d-none d-md-block">
-              <p>Some representative placeholder content for the second slide.</p>
+              <p>Make the most out of your client maturity assessments.</p>
             </div>
           </div>
           <div class="carousel-item">
             <%= image_tag "share_omag.png", class: "d-block w-100", alt: "share image" %>
             <div class="carousel-caption d-none d-md-block">
-              <p>Some representative placeholder content for the second slide.</p>
+              <p>Make the most out of your client maturity assessments.</p>
             </div>
           </div>
           <div class="carousel-item">

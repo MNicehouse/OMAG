@@ -22,12 +22,14 @@ class ResponsesController < ApplicationController
       @response.save
       redirect_to user_path(current_user, redir_param: 61, accord_param: "flush-headingSix")
     else
-    @assessment = Assessment.find(params[:assessment_id])
-    @response = Response.new(assessment: @assessment, user: User.find(params[:response][:user].to_i))
-    @response.save!
-    @assessment.state = true
-    @assessment.save
-    redirect_to user_path(current_user, redir_param: 61, accord_param: "flush-headingSix")
+      @assessment = Assessment.find(params[:assessment_id])
+      @response = Response.new(assessment: @assessment, user: User.find(params[:response][:user].to_i))
+      if @response.has_one_question
+        @response.save!
+        @assessment.state = true
+        @assessment.save
+        redirect_to user_path(current_user, redir_param: 61, accord_param: "flush-headingSix")
+      end
     end
   end
 
