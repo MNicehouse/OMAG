@@ -2,6 +2,10 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   include Pagy::Backend
 
+  def default_url_options
+    { host: ENV["DOMAIN"] || "localhost:3000" }
+  end
+
   def after_sign_in_path_for(resource)
     if @user.nil?
       redirect_to root_path # redirect to /

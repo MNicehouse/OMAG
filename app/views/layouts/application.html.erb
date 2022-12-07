@@ -2,14 +2,16 @@
 <html>
 
   <head>
-    <title>OMAG</title>
+    <title>Online Maturity Assessment Generator</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="turbo-visit-control" content="reload">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= favicon_link_tag asset_path('favicon.ico') %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <title><%= meta_title %></title>
+    <meta name="description" content="<%= meta_description %>">
   </head>
 
 
