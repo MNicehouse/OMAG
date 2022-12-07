@@ -12,8 +12,15 @@ User.destroy_all
 puts "creating assessments, questions & their options, question_assessments, answers, responses and users"
 
 # Real Maturity Assessment
+
+it_strategy = Assessment.create(
+  name: "IT Strategy Maturity Assessment",
+  description: "This maturity assessment helps us understand how your whole IT Strategy is structured and where
+  improvements can be made.",
+  state: false
+)
 okr_assessment = Assessment.create(
-  name: "OKR Assessment",
+  name: "OKR Maturity Assessment",
   description: "This is an OKR maturity assessment to see how far you are in the implementation of this methodology
   and where we can support."
 )
@@ -76,20 +83,39 @@ Question.all.each do |question|
     question: question
   )
   QuestionsAssessment.create(
-    weight: rand(1..8),
+    weight: rand(1..4),
     question: question,
     assessment: okr_assessment
   )
 end
 
-3.times do
-  User.create(
-    name: Faker::Name.name,
-    email: Faker::Internet.email,
-    password: "password",
-    admin: false
-  )
-end
+User.create(
+  name: "Brandie Spears",
+  email: "brandiespears@gmail.com",
+  password: "password",
+  admin: false
+)
+
+User.create(
+  name: "Tommy Bray",
+  email: "therealtommy@hotmail.com",
+  password: "password",
+  admin: false
+)
+
+User.create(
+  name: "Dena Sawyer",
+  email: "nottomsawyerbutdena@outlook.de",
+  password: "password",
+  admin: false
+)
+
+User.create(
+  name: "Matilda Cain",
+  email: "frenchfries@outlook.fr",
+  password: "password",
+  admin: false
+)
 
 User.all.each do |user|
   Response.create(
@@ -122,6 +148,24 @@ end
 
 Response.last.update(score: values.sum)
 Response.last.save!
+
+Response.create(
+  score: rand(1..30),
+  completed: true,
+  assessment_id: 1
+)
+
+Response.create(
+  score: rand(35..60),
+  completed: true,
+  assessment_id: 2
+)
+
+Response.create(
+  score: rand(70..100),
+  completed: true,
+  assessment_id: 3
+)
 
 puts "finished!"
 

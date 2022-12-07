@@ -1,4 +1,4 @@
-<div class="m-3">
+<div class="create-ass-page m-3">
   <%# Title, description & command buttons %>
   <div class="title-desc-container d-flex justify-content-between align-items-center mb-3">
     <div class="ass-title p-2">
@@ -6,8 +6,8 @@
       <p> <%= @assessment.description %></p>
     </div>
     <div class="command-buttons p-2 d-flex">
-      <%= link_to "Save", user_path(current_user), class: "btn btn-primary btn-command" %>
-      <%= render "responses/user_select_dropdown", class: "btn btn-primary btn-command" %>
+      <%= link_to "Save", assessments_path(redir_param: 71, accord_param: "flush-headingSeven"), class: "btn btn-primary btn-command" %>
+      <%= render "responses/user_select_dropdown", class: "btn btn-primary btn-command", users: @users %>
     </div>
   </div>
 
@@ -18,12 +18,14 @@
       <h3>Question editor</h3>
       <%= simple_form_for(@question) do |f| %>
         <input type="hidden" name="assessment" id="assessment" value="<%= @assessment.id ? @assessment.id : "" %>">
-        <%= f.input :question_text, class: "input-field" %>
+        <%= f.input :question_text, class: "input-field", placeholder:" eg. I am experienced with topic X", label: "Question or Statement" %>
+        <%# WEIGHT %>
         <div class="">
           <label for="weight">Question weight</label>
           <br>
-          <input type="integer" name="weight" id="weight" class="input-field" placeholder="1..8">
+          <input type="integer" value="<%= @question.questions_assessments.first&.weight %>" name="weight" id="weight" class="input-field" placeholder=" 1..4">
         </div>
+        <%# Question Type %>
           <h6 class="mt-4">Question Type</h6>
           <div class="d-flex flex-row mb-1 justify-content-start">
             <a href="#" class="btn btn-primary me-3">Multiple Choice</a>
@@ -31,21 +33,23 @@
             <a href="#" class="btn btn-outline-primary me-3">Likert Scale</a>
           </div>
         <div class="question_container">
+          <%# OPTIONS %>
           <div class="options">
             <p>Options</p>
             <% 3.times do |i| %>
-              <input type="text" placeholder="<%= "Option #{i + 1}..." %>" class="input-field" name='<%= "option_#{i + 1}" %>'>
+              <input type="text" value="<%= @question.options[i - 1]&.option_text %>" placeholder="<%= " Option #{i + 1}" %>" class="input-field" name='<%= "option_#{i + 1}" %>'>
             <% end %>
           </div>
+          <%# OPTIONS %>
           <div class="values">
             <p>Values</p>
             <% 3.times do |i| %>
-              <input type="text" placeholder="1..8" name='<%= "value_#{i + 1}" %>' class="input-field">
+              <input type="text" value="<%= @question.options[i - 1]&.value %>" placeholder=" 1..3" name='<%= "value_#{i + 1}" %>' class="input-field">
             <% end %>
           </div>
         </div>
         <div class="d-flex justify-content-center mt-3">
-          <%= f.submit "Save new question", class: "btn btn-primary" %>
+          <%= f.submit "Save question", class: "btn btn-primary" %>
           <% end %>
         </div>
     </div>
