@@ -21,6 +21,7 @@ class AssessmentsController < ApplicationController
 
   def create
     @assessment = Assessment.new(assessment_params)
+    @assessment.state = false
     if @assessment.save!
       redirect_to assessment_path(@assessment)
     else
@@ -30,7 +31,10 @@ class AssessmentsController < ApplicationController
 
   def index
     # @assessments = Assessment.all
+    @redir = params[:redir_param].nil? ? 0 : params[:redir_param].to_i
     @pagy, @assessments = pagy(Assessment.all, items: 10)
+    @pagy_drafts, @assessments_drafts = pagy(Assessment.where(state: false).nil? ? [] : Assessment.where(state: false).reorder(:created_at), items: 10)
+    @pagy_ready, @assessments_ready = pagy(Assessment.where(state: true).nil? ? [] : Assessment.where(state: true).reorder(:created_at), items: 10)
     @role = role(current_user)
     @assessnotchosen = true
   end

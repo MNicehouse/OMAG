@@ -17,9 +17,8 @@
            <div class="col">
              <div class="card h-100  bg-light">
                <div class="card-body bg-light">
-               <h5 class="card-text text-truncate text-center" style = "background-color: #dee2e6">Templates</h5>
-                 <p>You have totally <%= @assessments.count %> templates to this test</p>
-                 <p>thereof<%= " #{@assessments_drafts.count} templates drafts and #{@assessments_ready.count} ready templates" %></p>
+               <h5 class="card-text text-truncate text-center" style = "background-color: #dee2e6">New assessments</h5>
+                 <p>You have totally <%= @assessments_ready.count %> ready templates</p>
                </div>
              </div>
            </div>
@@ -27,10 +26,8 @@
      </div>
        <!--CARDS -->
           <% case  @redir%>
-          <% when  71%>
-              <%= render "assessmentpicker", assessments: @assessments_drafts, mypagy: @pagy_drafts, assess_state: 'draft', assess_link_show_flag: 1 %>
-           <% when  72%>
-             <%= render "assessmentpicker", assessments: @assessments_ready, mypagy: @pagy_ready, assess_state: 'ready', assess_link_show_flag: 0 %>
+           <% when  82%>
+             <%= render "sendassesstouser", assessments: @assessments_ready, mypagy: @pagy_ready, assess_state: 'ready', users: @clients, myuserspagy: @pagy_clients, assess_link_show_flag: 0 %>
            <% else %>
              ...
          <% end%>

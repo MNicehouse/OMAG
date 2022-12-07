@@ -11,8 +11,10 @@ Rails.application.routes.draw do
     resources :options, only: %i[new create]
   end
 
+  resources :responses, only: %i[index new create]
+  
   resources :users do
-    resources :responses, only: %i[index]
+    resources :responses, only: %i[index new create]
   end
 
   resources :assessments, only: %i[index show new create] do
