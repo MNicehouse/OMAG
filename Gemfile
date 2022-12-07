@@ -57,7 +57,6 @@ gem "faker"
 
 gem 'bootstrap-icons-helper'
 
-gem 'pagy'
 #jquery
 # gem 'jquery-rails'
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
@@ -79,6 +78,8 @@ group :development do
   gem "web-console"
 
   gem "pry-byebug"
+
+  gem 'pagy'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
