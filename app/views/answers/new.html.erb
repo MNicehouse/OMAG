@@ -13,13 +13,13 @@
      <div class="col py-3">
        <%# Content area... %>
        <div class="container">
-         <div class="row row-cols-1 row-cols-md-2 g-3">
+         <div class="row row-cols-1 row-cols-md-2 g-1">
            <div class="col">
              <div class="card h-100  bg-light">
                <h4 class="card-title text-center bg-secondary text-light">Hello, <%= @user.name%>!</h4>
                <div class="card-body bg-light">
                <h5 class="card-text text-truncate text-center" style = "background-color: #dee2e6"><%= @response.assessment.name %></h5>
-                 <p>You have totally <%= @questions.count %> questions to this test</p>
+                 <p>The test contains <%= @questions.count %> questions</p>
                  <p><%= "#{@response.answers.count} questions completed" %></p>
                </div>
              </div>

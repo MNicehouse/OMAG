@@ -9,3 +9,6 @@ application.register("add-answer", AddAnswerController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import ResultController from "./result_controller"
+application.register("result", ResultController)
