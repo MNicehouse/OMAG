@@ -1,38 +1,38 @@
 <div class="container">
-<p>historic orders:</p>
- <% if @orders_historic_exist %>
+  <% if @admin_response_completed_exist %>
+  <h3>assessments completed by clients:</h3>
   <div class="row row-cols-1 row-cols-md-3 g-4">
     <!--CARD ITERATION -->
-     <% @orders_historic.each do |booking| %>
+    <% admin_responses_completed.each do |response| %>
       <div class="col">
-      <a href="<%= user_booking_path( @user, booking, redir_param: 62, accord_param: "flush-headingTwo")%>"  class="nav-link px-0">
+      <a href="<%= user_responses_path( response.user, response, redir_param: 21, accord_param: "flush-headingSix")%>"  class="nav-link px-0">
         <div class="card h-100">
-          <%= cl_image_tag booking.flat.photos.first.key, class: "card-img-top", alt: "flat picture" %>
+        <h5 class="card-title text-center"><p class="card-text text-truncate"><%= response.assessment.name %></p></h5>
+          <%= image_tag("assessments/#{pic_response_picker()}", width: 200, class: "card-img-top", alt: "assessment picture") %>
           <div class="card-body">
-            <h5 class="card-title"><%= link_to booking.flat.name, flat_path(booking.flat) %></h5>
-            <p class="card-text text-truncate"><%= booking.flat.description %></p>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <%= response.assessment.description %>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <p><%= "User name: #{response.user.email}" %></p>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <p><%= "#{response.assessment.questions_assessments.count} questions totally" %></p>
+              <p><%= "#{response.answers.count} questions completed" %></p>
+            </li>
+            <li style="list-style: none;">
+              <%= render 'bs_progressbar', pbvalwidth: ((response.answers.count.to_f / response.assessment.questions_assessments.count) * 100).round(0),
+                  pbvalmin: 0, pbvalnow: response.answers.count, pbvalmax: response.assessment.questions_assessments.count %>
+            </li>
+          </ul>
           </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item"><%= booking.flat.location %></li>
-            <li class="list-group-item d-flex justify-content-between">
-              <p><%= "#{booking.flat.price_per_night} €" %></p>
-              <p><%= booking.flat.average_rating %></p>
-            </li>
-          </ul>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Booking confirmed: <%= booking.confirmed  ? 'yes' : 'no' %></li>
-            <li class="list-group-item d-flex justify-content-between">
-              <p>Total: <%= "#{booking.total_price} €" %></p>
-              <p>von <%= booking.start_date %></p>
-              <p>bis<%= booking.end_date %></p>
-            </li>
-          </ul>
         </div>
         </a>
       </div>
     <% end %>
   </div>
   <% else %>
-  <p>no orders</p>
+    <p>no assessments completed by clients</p>
   <% end %>
 </div>
