@@ -64,6 +64,7 @@ gem 'bootstrap-icons-helper'
 gem 'bootstrap', '~> 5.2.2'
 gem "devise"
 gem "autoprefixer-rails"
+gem 'pagy'
 gem "font-awesome-sass", "~> 6.1"
 gem "simple_form", github: "heartcombo/simple_form"
 group :development, :test do
@@ -79,7 +80,6 @@ group :development do
 
   gem "pry-byebug"
 
-  gem 'pagy'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
