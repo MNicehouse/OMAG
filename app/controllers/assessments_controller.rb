@@ -9,7 +9,7 @@ class AssessmentsController < ApplicationController
   def show
     @assessment = Assessment.find(params[:id])
     @user = current_user
-    @users = User.all
+    @users = User.where(admin: false)
     @responses = Response.all
     @response = Response.new
     if params[:question_id]
