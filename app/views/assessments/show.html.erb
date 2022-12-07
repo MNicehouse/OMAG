@@ -1,63 +1,72 @@
-<div class="custom-container assessment-flex">
-  <div>
-    <h1><%= @assessment.name %></h1>
-    <p> <%= @assessment.description %></p>
+<div class="m-3">
+  <%# Title, description & command buttons %>
+  <div class="title-desc-container d-flex justify-content-between align-items-center mb-3">
+    <div class="ass-title p-2">
+      <h1><%= @assessment.name %></h1>
+      <p> <%= @assessment.description %></p>
+    </div>
+    <div class="command-buttons p-2 d-flex">
+      <%= link_to "Save", user_path(current_user), class: "btn btn-primary btn-command" %>
+      <%= render "responses/user_select_dropdown", class: "btn btn-primary btn-command" %>
+    </div>
   </div>
-  <%# command buttons %>
-  <div class="command buttons">
-    <%= link_to "Save", user_path(current_user), class: "btn btn-primary" %>
-    <%= render "responses/user_select_dropdown" %>
-  </div>
-</div>
 
-<%# Question-cards %>
-<div class="question-container custom-container">
-  <div>
-    <h3>Add new Question</h3>
-    <%= simple_form_for(@question) do |f| %>
-      <input type="hidden" name="assessment" id="assessment" value="<%= @assessment.id ? @assessment.id : "" %>">
-      <%= f.input :question_text, class: "input-field" %>
-      <div class="assessment-flex">
-        <%= f.input :question_type, placeholder: "Question Type", label: false, class: "input-field" %>
-        <input type="integer" name="weight" id="weight" class="input-field" placeholder="weight">
-      </div>
-
-      <h5>Answer options of your question</h5>
-      <div class="question_container">
-        <div class="options">
-          <h4>Options</h4>
-          <% 3.times do |i| %>
-            <input type="text" placeholder="Write your option" class="input-field" name='<%= "option_#{i + 1}" %>'>
-          <% end %>
+  <%# Question container %>
+  <div class="question-container d-flex justify-content-evenly flex-grow-1">
+    <%# Add a new question %>
+    <div class="add-new-question p-3 w-75 me-3">
+      <h3>Question editor</h3>
+      <%= simple_form_for(@question) do |f| %>
+        <input type="hidden" name="assessment" id="assessment" value="<%= @assessment.id ? @assessment.id : "" %>">
+        <%= f.input :question_text, class: "input-field" %>
+        <div class="">
+          <label for="weight">Question weight</label>
+          <br>
+          <input type="integer" name="weight" id="weight" class="input-field" placeholder="1..8">
         </div>
-        <div class="values">
-          <h4>Values</h4>
-          <% 3.times do |i| %>
-            <input type="text" placeholder="1..8" name='<%= "value_#{i + 1}" %>' class="input-field">
-          <% end %>
-        </div>
-      </div>
-
-      <%= f.submit "Save", class: "btn btn-primary" %>
-    <% end %>
-  </div>
-
-  <div>
-    <h3>Questions</h3>
-      <% @assessment.questions.each_with_index do |question, i| %>
-        <div class="card">
-          <div class="card-header question-header-container assessment-flex">
-            <p class="question-name">Question <%= i + 1 %></p>
-            <%= link_to "Delete", question_path(question.id), class:"c-button delete", data: {turbo_method: :delete} %>
+          <h6 class="mt-4">Question Type</h6>
+          <div class="d-flex flex-row mb-1 justify-content-start">
+            <a href="#" class="btn btn-primary me-3">Multiple Choice</a>
+            <a href="#" class="btn btn-outline-primary me-3">Bar Scale</a>
+            <a href="#" class="btn btn-outline-primary me-3">Likert Scale</a>
           </div>
-          <div class="card-body">
-            <div class="question-header-container assessment-flex">
-              <%= question.question_text %>
-              <%= link_to "Edit", assessment_path(@assessment, question_id: question.id), class:"c-button edit" %>
-              <a href="#" class="c-button edit">Edit</a>
+        <div class="question_container">
+          <div class="options">
+            <p>Options</p>
+            <% 3.times do |i| %>
+              <input type="text" placeholder="<%= "Option #{i + 1}..." %>" class="input-field" name='<%= "option_#{i + 1}" %>'>
+            <% end %>
+          </div>
+          <div class="values">
+            <p>Values</p>
+            <% 3.times do |i| %>
+              <input type="text" placeholder="1..8" name='<%= "value_#{i + 1}" %>' class="input-field">
+            <% end %>
+          </div>
+        </div>
+        <div class="d-flex justify-content-center mt-3">
+          <%= f.submit "Save new question", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+    </div>
+
+    <%# Question cards %>
+    <div class="question-cards p-3 w-25">
+      <h3>Questions</h3>
+        <% @assessment.questions.each_with_index do |question, i| %>
+          <div class="card d-flex flex-column mb-3">
+            <div class="card-header question-header-container d-flex d-flex align-items-center justify-content-between">
+              <p class="question-name m-0">Question <%= i + 1 %></p>
+              <%= link_to "Delete", question_path(question.id), class:"c-button-delete", data: {turbo_method: :delete} %>
+            </div>
+            <div class="card-body">
+              <div class="question-header-container d-flex d-flex align-items-center justify-content-between">
+                <%= question.question_text %>
+                <%= link_to "Edit", assessment_path(@assessment, question_id: question.id), class:"c-button-edit" %>
+              </div>
             </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+    </div>
   </div>
 </div>
