@@ -28,9 +28,9 @@
        <!--CARDS -->
           <% case  @redir%>
           <% when  71%>
-              <%= render "assessmentpicker", assessments: @assessments_drafts, mypagy: @pagy_drafts, assess_state: 'draft', assess_link_show_flag: 1 %>
+              <%= render "assessmentpicker", assessments: @assessments_drafts, mypagy: @pagy_drafts, assess_state: 'draft', assess_link_show_flag: true %>
            <% when  72%>
-             <%= render "assessmentpicker", assessments: @assessments_ready, mypagy: @pagy_ready, assess_state: 'ready', assess_link_show_flag: 0 %>
+             <%= render "assessmentpicker", assessments: @assessments_ready, mypagy: @pagy_ready, assess_state: 'ready', assess_link_show_flag: true %>
            <% else %>
              ...
          <% end%>
