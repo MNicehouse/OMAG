@@ -9,6 +9,7 @@
         <h5 class="card-title text-center"><div class="card-text text-truncate" style="background-color: #e7f1ff; margin-bottom: 0px"><%= response.assessment.name %></div></h5>
           <%= image_tag("assessments/#{pic_response_picker()}", width: 200, class: "card-img-top", alt: "assessment picture") %>
           <div class="card-body">
+           <div class= "responsedate"><%= "#{response.created_at.to_date} #{response.created_at.hour}:#{response.created_at.min}" %></div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <%= response.assessment.description %>
@@ -33,7 +34,7 @@
    <div class="col">
     <div class="card h-100  bg-light">
      <div class="card-body bg-light">
-      <p>no current tests</p>
+      <p>no open assessments</p>
       </div>
       </div>
       </div>

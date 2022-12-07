@@ -6,7 +6,7 @@
       <p> <%= @assessment.description %></p>
     </div>
     <div class="command-buttons p-2 d-flex">
-      <%= link_to "Save", user_path(current_user), class: "btn btn-primary btn-command" %>
+      <%= link_to "Save", assessments_path(redir_param: 71, accord_param: "flush-headingSeven"), class: "btn btn-primary btn-command" %>
       <%= render "responses/user_select_dropdown", class: "btn btn-primary btn-command" %>
     </div>
   </div>

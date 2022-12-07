@@ -1,6 +1,6 @@
 <div class="container">
   <% if @admin_responses_current_exist %>
-  <p>current responses to be completed by clients:</p>
+  <h3>open assessments to be completed by clients:</h3>
   <div class="row row-cols-1 row-cols-md-3 g-4">
     <!--CARD ITERATION -->
     <% admin_responses_current.each do |response| %>
@@ -10,6 +10,7 @@
         <h5 class="card-title text-center"><p class="card-text text-truncate"><%= response.assessment.name %></p></h5>
           <%= image_tag("assessments/#{pic_response_picker()}", width: 200, class: "card-img-top", alt: "assessment picture") %>
           <div class="card-body">
+          <div class= "responsedate"><%= "created #{response.created_at.to_date} #{response.created_at.hour}:#{response.created_at.min}" %></div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <%= response.assessment.description %>
@@ -33,6 +34,6 @@
     <% end %>
   </div>
   <% else %>
-    <p>no current responses</p>
+    <p>no open assessments</p>
   <% end %>
 </div>

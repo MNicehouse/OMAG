@@ -3,7 +3,7 @@
   <td scope="row"><%= assessment_counter + 1 %></td>
   <td><%= assessment.name %></td>
   <td><%= assessment.description %></td>
-  <td><%= assessment.state %></td>
+  <td style="display:none;"><%= assessment.state %></td>
   <%# <% if @assess_link_show_flag %>
   <td><%= link_to "Show", assessment_path(assessment), class: "btn btn-secondary container-fluid nav-link px-0" %></td>
   <%# <% end %>
