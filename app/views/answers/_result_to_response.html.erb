@@ -15,14 +15,14 @@
             <p class="card-text text-center fw-semibold">Your score: <%= exampescore_from_user_in_percent %> %</p>
             <p class="card-text"><small class="text-muted"></small></p>
             <div>
-            <%= image_tag "assessments/images/undraw_Security_re_a2rk.png", class:"card-img-bottom", alt: "bad" %>
+            <%= image_tag "assessments/undraw_Security_re_a2rk.png", class:"card-img-bottom", alt: "bad" %>
             </div>
           <% elsif (33..66) === exampescore_from_user_in_percent  %>
             <h2 class="card-title text-center bg-secondary text-light fw-semibold">Your level: Intermediate</h2>
               <p class="card-text text-center fw-semibold">Your score: <%= exampescore_from_user_in_percent %> %</p>
               <p class="card-text"><small class="text-muted"></small></p>
               <div>
-              <%= image_tag "assessments/images/undraw_heatmap_uyye.png", class:"card-img-bottom", size: "100px" , alt: "medium"  %>
+              <%= image_tag "assessments/undraw_heatmap_uyye.png", class:"card-img-bottom", size: "100px" , alt: "medium"  %>
             </div>
           <% else exampescore_from_user_in_percent >= 66 %>
             <h2 class="card-title text-center bg-secondary text-light fw-semibold">Your level: Expert</h2>
