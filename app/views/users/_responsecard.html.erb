@@ -1,9 +1,11 @@
 <div class="container" style="margin-top: 12px">
   <% if responses_current_exist %>
-  <div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="row">
+  <ul class="list"> 
     <!--CARD ITERATION -->
     <% responses_current.each do |response| %>
-      <div class="col">
+     <li class="list-item">  
+     <div class="list-content">
       <a href="<%= new_response_answer_path( response, redir_param: 21, accord_param: "flush-headingTwo")%>"  class="nav-link px-0">
         <div class="card h-100">
         <h5 class="card-title text-center"><div class="card-text text-truncate" style="background-color: #e7f1ff; margin-bottom: 0px"><%= response.assessment.name %></div></h5>
@@ -19,15 +21,19 @@
               <p><%= "#{response.answers.count} questions completed" %></p>
             </li>
             <li style="list-style: none;">
-              <%= render 'bs_progressbar', pbvalwidth: ((response.answers.count.to_f / response.assessment.questions_assessments.count) * 100).round(0),
-                  pbvalmin: 0, pbvalnow: response.answers.count, pbvalmax: response.assessment.questions_assessments.count %>
             </li>
           </ul>
           </div>
         </div>
+        <div class="card-footer">
+        <%= render 'bs_progressbar', pbvalwidth: ((response.answers.count.to_f / response.assessment.questions_assessments.count) * 100).round(0),
+                  pbvalmin: 0, pbvalnow: response.answers.count, pbvalmax: response.assessment.questions_assessments.count %>
+        </div>
         </a>
-      </div>
+  </div>  
+  </li>
     <% end %>
+      </ul>
   </div>
   <% else %>
     <div class="row row-cols-1 row-cols-md-2 g-3">
