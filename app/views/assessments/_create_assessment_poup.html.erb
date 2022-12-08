@@ -2,11 +2,10 @@
 
 
 <!-- Modal -->
-<div class="container mt-3">
+<div class="container create-question mt-3 p-3">
   <%= simple_form_for :assessment, data: { turbo: :false }, url: assessments_path  do |f| %>
     <%= f.input :name %>
     <%= f.input :description %>
-    <%= f.submit "Create assessment" %>
+    <%= f.submit "Create assessment", class:"btn btn-primary" %>
   <% end %>
-
 </div>

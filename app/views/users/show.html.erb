@@ -1,6 +1,6 @@
 
  <div class="container-fluid">
-   <div class="row flex-nowrap">
+   <div class="row flex-nowrap row row-cols-1 row-cols-md-2 g-3 justify-content-start">
      <!--SIDEBAR -->
      <%# Booker %>
      <% if  (@role == 'User')%>
@@ -11,25 +11,27 @@
      <% end%>
      <%= render  "users/navbar" %>
      <!--CONTENT -->
-     <div class="col py-3">
+     <div class="col py-3 ms-2">
         <%# Content area... %>
-       <div class="container">
-         <div class="row row-cols-1 row-cols-md-2 g-3">
-           <div class="col">
-             <div class="card h-100  bg-light">
-               <h4 class="card-title text-center bg-secondary text-light">
-               <% if (@redir == 21 || @redir == 22) %>
-               You have totally <%= @user.responses.count %> assessments:   
-                 <span><%= @user.responses.where(completed: false).count %> open and <%= @user.responses.where(completed: true).count %> completed assessments</span>
-               <% end %>
-               <% if (@redir == 61 || @redir == 62 || @redir == 63) %>
-                 You are in charge of 
-                 <span><%= @admin_responses_current.count %> open and <%= @admin_responses_completed.count %> completed assessments</span>
-               <% end %>
-               </h4>
-             </div>
-           </div>
-         </div>
+       <div class="m-0">
+
+        <div class="col">
+          <div class="">
+            <h4 class="card-title text-center bg-secondary text-light p-2 rounded">
+            <% if (@redir == 21 || @redir == 22) %>
+            Total number of assessments: <%= @user.responses.count %>
+            <br>
+              <span><%= @user.responses.where(completed: false).count %> open and <%= @user.responses.where(completed: true).count %> completed</span>
+            <% end %>
+            <% if (@redir == 61 || @redir == 62 || @redir == 63) %>
+              <span><%= @admin_responses_current.count %> Open assessments <br><%= @admin_responses_completed.count %> completed assessments</span>
+            <% end %>
+            </h4>
+          </div>
+        </div>
+
+
+
      </div>
 
        <!--CARDS -->
