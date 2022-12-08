@@ -22,3 +22,17 @@
   height: 39px;
   margin-right: 12px;
 }
+
+.button-omag-blue{
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: #0d6efd;
+  transition: background 0.3s ease;
+  text-decoration: none;
+}
+
+.button-omag-blue:hover {
+  background: #0b2a4e;
+  color: white;
+}
