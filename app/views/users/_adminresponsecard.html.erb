@@ -1,7 +1,7 @@
 <div class="container">
   <% if @admin_responses_current_exist %>
   <h4 class="mt-3 mb-3">Open assessments to be completed</h4>
-  <div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="row row-cols-1 row-cols-md-2 g-4">
     <!--CARD ITERATION -->
     <% admin_responses_current.each do |response| %>
       <div class="col">
@@ -19,8 +19,7 @@
               <p><%= "User name: #{response.user.name}" %></p>
             </li>
             <li class="list-group-item d-flex justify-content-between">
-              <p><%= "#{response.assessment.questions_assessments.count} questions totally" %></p>
-              <p><%= "#{response.answers.count} questions completed" %></p>
+              <p><%= "#{response.answers.count} questions out of #{response.assessment.questions_assessments.count} completed." %></p>
             </li>
             <li style="list-style: none;">
               <% if !response.assessment.questions_assessments.empty? && !response.answers.empty?%>

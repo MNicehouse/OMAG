@@ -15,8 +15,7 @@
               <%= response.assessment.description %>
             </li>
             <li class="list-group-item d-flex justify-content-between">
-              <p><%= "#{response.assessment.questions_assessments.count} questions totally" %></p>
-              <p><%= "#{response.answers.count} questions completed" %></p>
+              <p><%= "#{response.answers.count} questions out of #{response.assessment.questions_assessments.count} completed." %></p>
             </li>
             <li style="list-style: none;">
               <%= render 'bs_progressbar', pbvalwidth: ((response.answers.count.to_f / response.assessment.questions_assessments.count) * 100).round(0),
