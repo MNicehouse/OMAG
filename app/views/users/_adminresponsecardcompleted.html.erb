@@ -1,10 +1,12 @@
 <div class="container">
   <% if @admin_response_completed_exist %>
   <h3>assessments completed by clients:</h3>
-  <div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="row">
+  <ul class="list"> 
     <!--CARD ITERATION -->
     <% admin_responses_completed.each do |response| %>
-      <div class="col">
+     <li class="list-item">  
+     <div class="list-content">
       <a href="<%= user_responses_path( response.user, response, redir_param: 21, accord_param: "flush-headingSix")%>"  class="nav-link px-0">
         <div class="card h-100">
         <h5 class="card-title text-center"><p class="card-text text-truncate"><%= response.assessment.name %></p></h5>
@@ -15,7 +17,7 @@
               <%= response.assessment.description %>
             </li>
             <li class="list-group-item d-flex justify-content-between">
-              <p><%= "User name: #{response.user.email}" %></p>
+              <p><%= "User name: #{response.user.name}" %></p>
             </li>
             <li class="list-group-item d-flex justify-content-between">
               <p><%= "#{response.assessment.questions_assessments.count} questions totally" %></p>
@@ -29,8 +31,10 @@
           </div>
         </div>
         </a>
-      </div>
+            </div>
+      </li>
     <% end %>
+      </ul>
   </div>
   <% else %>
     <p>no assessments completed by clients</p>
