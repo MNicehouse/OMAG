@@ -1,5 +1,5 @@
-
 <div class="container" style="margin-top: 24px" data-controller="add-answer" data-add-answer-target="card">
+<div class="row row-cols-1 row-cols-md-2 g-1 ">
   <div class="card">
   <%= simple_form_for [response, answer], html: { data: {add_answer_target: "form", action: "submit->add-answer#create"}} do |f| %>
 
@@ -28,4 +28,5 @@
   </div>
 
   <% end %>
+</div>
 </div>
