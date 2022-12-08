@@ -13,9 +13,15 @@ puts "creating assessments, questions & their options, question_assessments, ans
 
 # Real Maturity Assessment
 
-it_strategy = Assessment.create(
-  name: "IT Strategy Maturity Assessment",
-  description: "This maturity assessment helps us understand how your whole IT Strategy is structured and where
+#company culture
+company_culture = Assessment.create(
+  name: "Company Culture Maturity Assessment",
+  description: "This maturity assessment helps us understand how well you will fit into our company culture.",
+  state: false
+)
+recruiting = Assessment.create(
+  name: "Recruiting Maturity Assessment",
+  description: "This maturity assessment helps us understand how your whole recruiting process is structured and where
   improvements can be made.",
   state: false
 )
@@ -42,27 +48,7 @@ Question.create(
   question_type: "Multiple Choice"
 )
 Question.create(
-  question_text: "I am a certified OKR coach.",
-  question_type: "Multiple Choice"
-)
-Question.create(
   question_text: "I can coach others in the OKR methodology.",
-  question_type: "Multiple Choice"
-)
-Question.create(
-  question_text: "I have experience in coaching others in the OKR methodology",
-  question_type: "Multiple Choice"
-)
-Question.create(
-  question_text: "I am able to apply the OKR methodology in practice.",
-  question_type: "Multiple Choice"
-)
-Question.create(
-  question_text: "I am able to teach others in how to apply the OKR methodology.",
-  question_type: "Multiple Choice"
-)
-Question.create(
-  question_text: "I understand the OKR cycle.",
   question_type: "Multiple Choice"
 )
 
@@ -89,41 +75,56 @@ Question.all.each do |question|
   )
 end
 
-User.create(
+earl = User.create(
+  name: "Earl E. Bird",
+  email: "earl@bird.chip",
+  password: "password",
+  admin: false
+
+)
+
+brandie = User.create(
   name: "Brandie Spears",
   email: "brandiespears@gmail.com",
   password: "password",
   admin: false
 )
 
-User.create(
+tommy = User.create(
   name: "Tommy Bray",
   email: "therealtommy@hotmail.com",
   password: "password",
   admin: false
 )
 
-User.create(
+dena = User.create(
   name: "Dena Sawyer",
   email: "nottomsawyerbutdena@outlook.de",
   password: "password",
   admin: false
 )
 
-User.create(
+matilda = User.create(
   name: "Matilda Cain",
   email: "frenchfries@outlook.fr",
   password: "password",
   admin: false
 )
 
-User.all.each do |user|
-  Response.create(
-    score: 0,
-    user: user,
-    assessment: okr_assessment
-  )
-end
+Response.create(
+  user: brandie,
+  assessment: okr_assessment
+)
+
+Response.create(
+  user: tommy,
+  assessment: recruiting
+)
+
+Response.create(
+  user: dena,
+  assessment: company_culture
+)
 
 User.create(
   email: "admin@example.com",
@@ -150,53 +151,24 @@ Response.last.update(score: values.sum)
 Response.last.save!
 
 Response.create(
+  user: dena,
   score: rand(1..30),
   completed: true,
   assessment_id: 1
 )
 
 Response.create(
+  user: brandie,
   score: rand(35..60),
-  completed: true,
+  completed: false,
   assessment_id: 2
 )
 
 Response.create(
+  user: tommy,
   score: rand(70..100),
-  completed: true,
+  completed: false,
   assessment_id: 3
 )
 
 puts "finished!"
-
-# end
-
-# 20.times do |i|
-#   questions_assessment = QuestionsAssessment.new(
-#     assessment: Assessment.last,
-#     question: Question.where("id = ?", Question.first.id + i).first,
-#     weight: 4
-#   )
-#   #
-#   questions_assessment.save!
-# end
-# # populate answers to eacj questions
-# Question.all.each do |question|
-#   4.times do |i|
-#     option = Option.new(
-#       question: question,
-#       option_text: "Lorel ipsum dolor response #{i}",
-#       value: rand(5)
-#     )
-#     #
-#     option.save!
-#   end
-# end
-# # add answer
-#   4.times do |i|
-#     answer = Answer.new(
-#       response: Response.first,
-#       option: Option.take
-#     )
-#    answer.save!
-#   end

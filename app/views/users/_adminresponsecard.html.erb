@@ -23,8 +23,10 @@
               <p><%= "#{response.answers.count} questions completed" %></p>
             </li>
             <li style="list-style: none;">
-              <%= render 'bs_progressbar', pbvalwidth: ((response.answers.count.to_f / response.assessment.questions_assessments.count) * 100).round(0),
+              <% if !response.assessment.questions_assessments.empty? && !response.answers.empty?%>
+                <%= render 'bs_progressbar', pbvalwidth: ((response.answers.count.to_f / response.assessment.questions_assessments.count) * 100).round(0),
                   pbvalmin: 0, pbvalnow: response.answers.count, pbvalmax: response.assessment.questions_assessments.count %>
+              <% end %>
             </li>
           </ul>
           </div>
