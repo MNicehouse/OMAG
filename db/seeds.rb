@@ -32,8 +32,6 @@ puts "creating assessments, questions & their options, question_assessments, ans
     state: false
   )
 
-
-
   hr_strategy = Assessment.create(
     name: "HR Strategy Maturity Assessment",
     description: "This maturity assessment helps us understand how well you will fit into our company culture.",
@@ -41,28 +39,30 @@ puts "creating assessments, questions & their options, question_assessments, ans
   )
 
 # OKR Maturity Assessment
+okr_questions = [
   Question.create(
     question_text: "I know what OKRs are.",
     question_type: "Multiple Choice"
-  )
+  ),
   Question.create(
     question_text: "I understand the OKR cycle.",
     question_type: "Multiple Choice"
-  )
+  ),
   Question.create(
     question_text: "I understand the OKR principles.",
     question_type: "Multiple Choice"
-  )
+  ),
   Question.create(
     question_text: "I am able to explain the main OKR principles to others.",
     question_type: "Multiple Choice"
-  )
+  ),
   Question.create(
     question_text: "I can coach others in the OKR methodology.",
     question_type: "Multiple Choice"
   )
+]
 
-  Question.all.each do |question|
+  okr_questions.each do |question|
     Option.create(
       option_text: "Strongly agree",
       value: 2,
@@ -86,24 +86,24 @@ puts "creating assessments, questions & their options, question_assessments, ans
   end
 
 # Recruiting Maturity Assessment
-recruiting_questions = [
-  Question.create(
-      question_text: "If you have a week time to train two monkeys do your job, do you think they are able to replace you without anyone noticing?",
-      question_type: "Multiple Choice"
-    ),
+  recruiting_questions = [
     Question.create(
-      question_text: "You are so funny that you will most certainly be awarded the office jokester award.",
-      question_type: "Multiple Choice"
-    ),
-    Question.create(
-      question_text: "You are given the super powers of Superman, so you decide to fry some eggs with your eyes for the whole team.",
-      question_type: "Multiple Choice"
-    ),
-    Question.create(
-      question_text: "When I'm working from home, I wear my pyjamas.",
-      question_type: "Multiple Choice"
-    )
-]
+        question_text: "If you have a week time to train two monkeys do your job, do you think they are able to replace you without anyone noticing?",
+        question_type: "Multiple Choice"
+      ),
+      Question.create(
+        question_text: "You are so funny that you will most certainly be awarded the office jokester award.",
+        question_type: "Multiple Choice"
+      ),
+      Question.create(
+        question_text: "You are given the super powers of Superman, so you decide to fry some eggs with your eyes for the whole team.",
+        question_type: "Multiple Choice"
+      ),
+      Question.create(
+        question_text: "When I'm working from home, I wear my pyjamas.",
+        question_type: "Multiple Choice"
+      )
+  ]
 
   recruiting_questions.each do |question|
     Option.create(
@@ -196,7 +196,14 @@ recruiting_questions = [
 
 
 # Score calculation
-  Question.all.each do |question|
+  okr_questions.each do |question|
+    Answer.create(
+      option: question.options.first,
+      response: Response.all[1]
+    )
+  end
+
+  recruiting_questions.each do |question|
     Answer.create(
       option: question.options.first,
       response: Response.last

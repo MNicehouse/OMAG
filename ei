@@ -1,0 +1,30 @@
+=> [[32m#<Assessment:0x00007fedd0066ad8[0m
+  id: [1;34m30[0m,
+  name: [31m[1;31m"[0m[31mCompany Culture Maturity Assessment[1;31m"[0m[31m[0m,
+  description: [31m[1;31m"[0m[31mThis maturity assessment helps us understand how well you will fit into our company culture.[1;31m"[0m[31m[0m,
+  created_at: [1;34;4mThu[0m, [1;34m08[0m [1;34;4mDec[0m [1;34m2022[0m [1;34m17[0m:[1;34m01[0m:[1;35m41.321961000[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m,
+  updated_at: [1;34;4mThu[0m, [1;34m08[0m [1;34;4mDec[0m [1;34m2022[0m [1;34m17[0m:[1;34m01[0m:[1;35m41.321961000[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m,
+  state: [1;36mfalse[0m[32m>[0m,
+ [32m#<Assessment:0x00007fedd005cd08[0m
+  id: [1;34m31[0m,
+  name: [31m[1;31m"[0m[31mOKR Maturity Assessment[1;31m"[0m[31m[0m,
+  description:
+   [31m[1;31m"[0m[31mThis is an OKR maturity assessment to see how far you are in the implementation of this methodology[1;35m\n[0m[31m    and where we can support.[1;31m"[0m[31m[0m,
+  created_at: [1;34;4mThu[0m, [1;34m08[0m [1;34;4mDec[0m [1;34m2022[0m [1;34m17[0m:[1;34m01[0m:[1;35m41.327525000[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m,
+  updated_at: [1;34;4mThu[0m, [1;34m08[0m [1;34;4mDec[0m [1;34m2022[0m [1;34m17[0m:[1;34m01[0m:[1;35m41.327525000[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m,
+  state: [1;36mfalse[0m[32m>[0m,
+ [32m#<Assessment:0x00007fedd005cc40[0m
+  id: [1;34m32[0m,
+  name: [31m[1;31m"[0m[31mRecruiting Maturity Assessment[1;31m"[0m[31m[0m,
+  description:
+   [31m[1;31m"[0m[31mThis maturity assessment helps us understand how your whole recruiting process is structured and where[1;35m\n[0m[31m    improvements can be made.[1;31m"[0m[31m[0m,
+  created_at: [1;34;4mThu[0m, [1;34m08[0m [1;34;4mDec[0m [1;34m2022[0m [1;34m17[0m:[1;34m01[0m:[1;35m41.333194000[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m,
+  updated_at: [1;34;4mThu[0m, [1;34m08[0m [1;34;4mDec[0m [1;34m2022[0m [1;34m17[0m:[1;34m01[0m:[1;35m41.333194000[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m,
+  state: [1;36mfalse[0m[32m>[0m,
+ [32m#<Assessment:0x00007fedd005cb28[0m
+  id: [1;34m33[0m,
+  name: [31m[1;31m"[0m[31mHR Strategy Maturity Assessment[1;31m"[0m[31m[0m,
+  description: [31m[1;31m"[0m[31mThis maturity assessment helps us understand how well you will fit into our company culture.[1;31m"[0m[31m[0m,
+  created_at: [1;34;4mThu[0m, [1;34m08[0m [1;34;4mDec[0m [1;34m2022[0m [1;34m17[0m:[1;34m01[0m:[1;35m41.339949000[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m,
+  updated_at: [1;34;4mThu[0m, [1;34m08[0m [1;34;4mDec[0m [1;34m2022[0m [1;34m17[0m:[1;34m01[0m:[1;35m41.339949000[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m,
+  state: [1;36mfalse[0m[32m>[0m]
