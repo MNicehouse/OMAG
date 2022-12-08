@@ -3,4 +3,9 @@ class PagesController < ApplicationController
 
   def home
   end
+
+  def hrole(puser)
+    return puser.admin ? "Admin" : "User"
+  end
+  helper_method :hrole
 end

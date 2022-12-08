@@ -3,7 +3,7 @@
     <h1>Online Maturity Assessment Generator</h1>
     <p>Qualify your prospects beyond the pushy sales talk</p>
     <% if user_signed_in? %>
-      <%= link_to "Get started", user_path(current_user, redir_param: 61, accord_param: "flush-headingSix"), class: "btn btn-light" %>
+      <%= link_to "Get started", hrole(current_user) == 'Admin' ? user_path(current_user, redir_param: 61, accord_param: "flush-headingSix") : user_path(current_user, redir_param: 21, accord_param: "flush-headingTwo"), class: "btn btn-light" %>
     <%else  %>
     <%= link_to "Get started", new_user_session_path, class: "btn btn-light" %>
   <% end %>
