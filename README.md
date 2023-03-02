@@ -13,7 +13,7 @@ The app provides real-time insights, making it easy for consultants to identify 
 Online Maturity Assessment Generator saves consulting professionals time and effort by streamlining the assessment process and providing actionable insights. It's a powerful tool that can help organizations identify areas for growth and improvement, and ultimately achieve their goals.
 
 # Tech Stack
-We developed our Webapp with the Ruby on Rails Framework Python and deployed it with Heroku.
+We developed our Webapp with the Ruby on Rails Framework deployed it with Heroku.
 Please check our site here: http://www.omag.site/
 
 # Database Schema
@@ -22,18 +22,29 @@ Please check our site here: http://www.omag.site/
 
 # User Journey
 <details>
-  <summary>Create an assesment</summary>
+  <summary>Create a new assesment</summary>
   <img width="1270" alt="create an assesment" src="https://user-images.githubusercontent.com/63351461/222458260-971d1645-8ed9-4349-9d6e-33721f7e5e57.png"> 
 </details>
 
 <details>
-  <summary>Add a question to Assesment & Send the Assessment to a user</summary>
+  <summary>Add a question to the Assesment & Send the Assessment to a User</summary>
   <img width="1280" alt="add question and send to user" src="https://user-images.githubusercontent.com/63351461/222459986-08d73145-3a59-40a7-9c14-904cfc6a57ee.png">
 </details>
 
 <details>
-  <summary>Answer the Assesesment to a User</summary>
-  <img width="1280" alt="add question and send to user" src="https://user-images.githubusercontent.com/63351461/222459986-08d73145-3a59-40a7-9c14-904cfc6a57ee.png">
+  <summary>View User Dashboard with open Assesments</summary>
+  <img width="1265" alt="answer assesment" src="https://user-images.githubusercontent.com/63351461/222467000-271aaa09-96fe-455b-8e1c-6904e7ff2103.png">
+</details>
+
+<details>
+  <summary>Answer Questions of the Assesment as an Enduser </summary>
+ <img width="1268" alt="answer question assesment" src="https://user-images.githubusercontent.com/63351461/222467791-866c3c3b-048a-4507-aa79-a68020efea04.png">
+</details>
+
+<details>
+  <summary>Calculate the Maturity on a specific Assessment </summary>
+<img width="1280" alt="finishs" src="https://user-images.githubusercontent.com/63351461/222470245-fba458bc-3ae9-4535-8dc7-4fe1f498268c.png">
+
 </details>
 
 # About us
