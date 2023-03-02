@@ -6,9 +6,9 @@ To make it as easy as possible we have created the Online Maturity Assessment Ge
 
 # How it works
 
-The tool is highly flexible and customizable, allowing consultants to create assessment templates that align with their clients' unique needs and goals. Consultants can choose from a variety of question types, including multiple-choice, Likert scale, and open-ended questions, to capture a comprehensive picture of the organization's maturity.
+The tool allows consultants to create assessment templates that align with their clients' unique needs and goals. Consultants can define questions and their individual score to capture a comprehensive picture of the organization's maturity.
 
-The app provides real-time insights and visualizations, making it easy for consultants to identify gaps and opportunities for improvement. The generated reports can also be used to guide clients in creating actionable plans to enhance their maturity in the specific domain.
+The app provides real-time insights, making it easy for consultants to identify gaps and opportunities for improvement. The generated reports can also be used to guide clients in creating actionable plans to enhance their maturity in the specific domain.
 
 Online Maturity Assessment Generator saves consulting professionals time and effort by streamlining the assessment process and providing actionable insights. It's a powerful tool that can help organizations identify areas for growth and improvement, and ultimately achieve their goals.
 
@@ -19,6 +19,22 @@ Please check our site here: http://www.omag.site/
 # Database Schema
 <img width="712" alt="image" src="https://user-images.githubusercontent.com/63351461/222133425-fb1b500f-124e-4a7a-bb81-74cea634f6c1.png">
 
+
+# User Journey
+<details>
+  <summary>Create an assesment</summary>
+  <img width="1270" alt="create an assesment" src="https://user-images.githubusercontent.com/63351461/222458260-971d1645-8ed9-4349-9d6e-33721f7e5e57.png"> 
+</details>
+
+<details>
+  <summary>Add a question to Assesment & Send the Assessment to a user</summary>
+  <img width="1280" alt="add question and send to user" src="https://user-images.githubusercontent.com/63351461/222459986-08d73145-3a59-40a7-9c14-904cfc6a57ee.png">
+</details>
+
+<details>
+  <summary>Answer the Assesesment to a User</summary>
+  <img width="1280" alt="add question and send to user" src="https://user-images.githubusercontent.com/63351461/222459986-08d73145-3a59-40a7-9c14-904cfc6a57ee.png">
+</details>
 
 # About us
 This project was developed by Markus Nettesheim, Christopher Beraud, Sasha Alexander Belski and Paul Tilly in a 2-week sprint as a requirement for the completion of a Web Developmen Bootcamp at Le Wagon.
