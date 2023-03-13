@@ -1,8 +1,7 @@
-![logo](https://user-images.githubusercontent.com/63351461/224693561-ea070ac8-ef18-41f7-9861-30e424b0d923.png)
+<img src="https://user-images.githubusercontent.com/63351461/222115384-e47c0293-b057-47fc-b68a-cb5fce6d73c3.png" width="300" height= "300">
 
-
-# CarbonBNB
-In this group at Le Wagon excerise a AirBNB clone was devloped
+# Online Maturity Assessment Gererator
+Online Maturity Assessment Generator saves consulting professionals time and effort by streamlining the assessment process and providing actionable insights. It's a powerful tool that can help organizations identify areas for growth and improvement, and ultimately achieve their goals.
 
 # How it works
 
